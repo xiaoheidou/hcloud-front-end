@@ -1,23 +1,67 @@
 @import "../../../assets/mixins";
-.app {
+.app {}
+
+.app-sider {}
+
+.app-logo {
+    height: 32px;
+    line-height: 32px;
+    background: rgba(255, 255, 255, .2);
+    margin: 16px;
+    font-size: 20px;
+    color: #ffffff;
     text-align: center;
-    margin-top: 50px;
-    .clearfix();
-    .img {
-        margin: 0 auto;
-        border: 1px red solid;
-        width: 250px;
-        height: 250px;
-        background: url("images/hehe.png") no-repeat;
-        background-size: 100%;
-        border-radius: 10px;
-        display: flex;
+}
+
+.app-header {
+    background: #ffffff;
+    padding: 0;
+}
+
+.app-trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color .3s;
+    &:hover {
+        color: #1890ff;
     }
-    table {
-        border-collapse: collapse;
-        width: 100%;
+}
+
+.app-header-right {
+    float: right;
+    margin-right: 12px;
+}
+
+.app-action {
+    cursor: pointer;
+    padding: 0 12px;
+    display: inline-block;
+    height: 100%;
+    color: inherit;
+    >i {
+        font-size: 18px;
+        vertical-align: middle;
     }
-    td {
-        border: 1px solid #dddddd;
+}
+
+.app-account {
+    .app-avatar {
+        border: 1px solid #d9d9d9;
+        margin-right: 6px;
     }
+}
+
+.app-account-menu {
+    .anticon {
+        margin-right: 6px;
+    }
+}
+
+.app-content {
+    margin: 16px;
+    padding: 16px;
+    background: #ffffff;
+    min-height: 700px;
 }

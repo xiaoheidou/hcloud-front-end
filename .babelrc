@@ -1,16 +1,36 @@
 {
-  "presets": ["env", "react","stage-0"],
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "last 3 versions"
+          ]
+        },
+        // "debug": true
+      }
+    ],
+    "react",
+    "stage-0"
+  ],
   "plugins": [
-    ["transform-runtime", {
-      "helpers": false,
-      "polyfill": true,
-      "regenerator": true,
-      "moduleName": "babel-runtime"
-    }],
-    ["import", {
+    [
+      "transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": true,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
+    ],
+    [
+      "import",
+      {
         "libraryName": "antd",
         "libraryDirectory": "es",
-        "style": true   // `style: true` 会加载 less 文件 `style: css` 会加载 css 文件
-    }]
+        "style": true // `style: true` 会加载 less 文件 `style: css` 会加载 css 文件
+      }
+    ]
   ]
 }

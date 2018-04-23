@@ -2,41 +2,55 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:31:38 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-04-17 23:33:54
+ * @Last Modified time: 2018-04-23 18:37:59
  */
 import React from 'react';
-
-import Title from './Title';
-import Table from './Table';
 import Loadable from 'react-loadable';
 import { Route, Switch } from 'react-router-dom';
+import { Layout } from 'antd';
+import AppSider from './AppSider';
+import AppHeader from './AppHeader';
+
+const Content = Layout.Content;
 
 class App extends React.Component {
 
-    changeTitle = () => {
-        this.props.updateTitle('app-' + (+new Date));
+    state = {
+        collapsed: false
     }
 
     componentDidMount() {
         this.props.getList();
     }
 
+    toggle = () => {
+        this.setState({
+            collapsed: !this.state.collapsed,
+        });
+    }
+
     render() {
-        const { app, match } = this.props;
+        const { /* app, */ match } = this.props;
 
         return <div className="app">
-            <Switch>
-                <Route path={`${match.url}/test`} component={
-                    Loadable({
-                        loader: () => import(/* webpackChunkName: "app-test" */'../routes/test'),
-                        loading: () => null
-                    })
-                } />
-            </Switch>
+            <Layout>
+                <AppSider collapsed={this.state.collapsed} />
+                <Layout>
+                    <AppHeader collapsed={this.state.collapsed} toggle={this.toggle} />
+                    <Content className="app-content">
+                        Content
+                        <Switch>
+                            <Route path={`${match.url}/test`} component={
+                                Loadable({
+                                    loader: () => import(/* webpackChunkName: "app-test" */'../routes/test'),
+                                    loading: () => null
+                                })
+                            } />
+                        </Switch>
+                    </Content>
+                </Layout>
+            </Layout>
 
-            <Title>{app.title}</Title>
-            <div className="img" onClick={this.changeTitle}></div>
-            <Table list={app.list}></Table>
         </div>;
     }
 }

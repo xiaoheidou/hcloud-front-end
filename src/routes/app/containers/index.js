@@ -1,13 +1,13 @@
 /*
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:32:15 
- * @Last Modified by:   harry.lang 
- * @Last Modified time: 2018-04-17 23:32:15 
+ * @Last Modified by: harry.lang
+ * @Last Modified time: 2018-04-23 18:33:43
  */
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { updateTitle, getList } from '../actions';
+import { getList } from '../actions';
 import App from '../components/App';
 
 class AppContainer extends React.Component {
@@ -17,13 +17,12 @@ class AppContainer extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-    return state.appReducer ? { app: state.appReducer } : {};
+    return { app: state.app };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
     return {
         dispatch: dispatch,
-        updateTitle: (params) => dispatch(updateTitle(params)),
         getList: () => dispatch(getList())
     };
 }

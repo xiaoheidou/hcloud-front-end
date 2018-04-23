@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:28:12 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-04-17 23:40:08
+ * @Last Modified time: 2018-04-23 17:22:11
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -90,7 +90,7 @@ let baseConfig = {
             children: true
         }),
         new CopyWebpackPlugin([
-            { from: './src/public', to: '' }
+            { from: './src/static', to: '' }
         ]),
         new HtmlWebpackPlugin({
             filename: './index.html',
