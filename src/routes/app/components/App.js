@@ -2,11 +2,11 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:31:38 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-04-23 18:37:59
+ * @Last Modified time: 2018-04-23 23:41:33
  */
 import React from 'react';
 import Loadable from 'react-loadable';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import AppSider from './AppSider';
 import AppHeader from './AppHeader';
@@ -20,7 +20,6 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getList();
     }
 
     toggle = () => {
@@ -30,7 +29,7 @@ class App extends React.Component {
     }
 
     render() {
-        const { /* app, */ match } = this.props;
+        const { match } = this.props;
 
         return <div className="app">
             <Layout>
@@ -38,14 +37,14 @@ class App extends React.Component {
                 <Layout>
                     <AppHeader collapsed={this.state.collapsed} toggle={this.toggle} />
                     <Content className="app-content">
-                        Content
                         <Switch>
-                            <Route path={`${match.url}/test`} component={
+                            <Route path={`${match.url}/resource`} component={
                                 Loadable({
-                                    loader: () => import(/* webpackChunkName: "app-test" */'../routes/test'),
+                                    loader: () => import(/* webpackChunkName: "resource" */'../routes/resource'),
                                     loading: () => null
                                 })
                             } />
+                            <Redirect from="/" to={`${match.url}/resource`} />
                         </Switch>
                     </Content>
                 </Layout>
