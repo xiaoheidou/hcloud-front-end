@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:27:42 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-04-23 22:44:55
+ * @Last Modified time: 2018-04-24 22:41:49
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -24,6 +24,12 @@ ReactDOM.render(
                 <Route path="/app" component={
                     Loadable({
                         loader: () => import(/* webpackChunkName: "app" */'./routes/app'),
+                        loading: Loading
+                    })
+                } />
+                <Route path="/login" component={
+                    Loadable({
+                        loader: () => import(/* webpackChunkName: "login" */'./routes/login'),
                         loading: Loading
                     })
                 } />
