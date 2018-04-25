@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-23 17:58:07 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-04-23 18:21:56
+ * @Last Modified time: 2018-04-25 14:21:57
  */
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
@@ -21,7 +21,7 @@ class AppSider extends React.Component {
             <div className="app-logo">{!collapsed ? 'HCLOUD' : 'H'}</div>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                 <Menu.Item key="1">
-                    <Link to="app">
+                    <Link to="/app">
                         <Icon type="profile" />
                         <span>资源管理</span>
                     </Link>
