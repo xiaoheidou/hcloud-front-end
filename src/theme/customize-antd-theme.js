@@ -1,8 +1,8 @@
 /*
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:25:05 
- * @Last Modified by:   harry.lang 
- * @Last Modified time: 2018-04-17 23:25:05 
+ * @Last Modified by: harry.lang
+ * @Last Modified time: 2018-04-25 13:54:48
  */
 const path = require('path');
 
@@ -13,7 +13,6 @@ const antStyleUrl = path.resolve(basePath, 'node_modules/antd/es/style/core');
 
 module.exports = () => {
     return {
-        'primary-color': '#1DA57A',
         'icon-url': '"' + path.relative(antStyleUrl, iconUrl) + '"'
     };
 };
