@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:28:27 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-04-18 00:04:14
+ * @Last Modified time: 2018-04-26 23:31:52
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -19,7 +19,8 @@ module.exports = {
             'redux',
             'react-redux',
             'redux-thunk',
-            'whatwg-fetch'
+            'whatwg-fetch',
+            'moment'
         ]
     },
     output: {

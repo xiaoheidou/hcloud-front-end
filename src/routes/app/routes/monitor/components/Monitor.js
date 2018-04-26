@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line } from 'SRC_PATH/components/Echarts';
+import RangeDatePicker from 'SRC_PATH/components/RangeDatePicker';
 
 class Monitor extends React.Component {
     state = {}
@@ -12,10 +13,15 @@ class Monitor extends React.Component {
         });
     }
 
+    changeDate = (times) => {
+        console.log(new Date(times[0]).toLocaleString(), new Date(times[1]).toLocaleString());
+    }
+
     render() {
         const { match } = this.props;
 
         return <div className="monitor">
+            <RangeDatePicker onChange={this.changeDate} />
             <h3 className="monitor-title"></h3>
             hostKey: {match.params.hostKey}
 

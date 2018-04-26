@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:28:12 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-04-23 17:22:11
+ * @Last Modified time: 2018-04-26 23:32:24
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -113,9 +113,9 @@ let baseConfig = {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         }),
         new BundleAnalyzerPlugin({
-            analyzerMode: 'disabled', // static disabled server
-            // analyzerHost: '127.0.0.1',
-            // analyzerPort: '8888'
+            analyzerMode: 'server', // static disabled server
+            analyzerHost: '127.0.0.1',
+            analyzerPort: '8888'
         })
     ]
 };
