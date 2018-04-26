@@ -1,4 +1,4 @@
-import constants from '../constants';
+import constants from './constants';
 
 const action_handles = {
     [constants.SET_LIST]: (state, action) => {

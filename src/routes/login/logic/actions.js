@@ -1,4 +1,4 @@
-import constants from '../constants';
+import constants from './constants';
 import fetch from 'SRC_PATH/utils/fetch';
 import API from 'SRC_PATH/config/api';
 

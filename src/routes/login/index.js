@@ -1,5 +1,5 @@
 import Container from './containers';
-import reducer from './reducers';
+import reducer from './logic/reducers';
 import { injectReducer } from 'rootReducer';
 import './assets/style.less';
 
