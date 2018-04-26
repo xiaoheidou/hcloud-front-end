@@ -1,6 +1,6 @@
 import React from 'react';
-import { Line } from 'SRC_PATH/components/Echarts';
 import RangeDatePicker from 'SRC_PATH/components/RangeDatePicker';
+import LineChart from './LineCard';
 
 class Monitor extends React.Component {
     state = {}
@@ -26,7 +26,7 @@ class Monitor extends React.Component {
             hostKey: {match.params.hostKey}
 
             <div style={{ width: 400, height: 300 }}>
-                <Line data={this.state.data} />
+                <LineChart data={this.state.data} />
             </div>
         </div>;
     }
