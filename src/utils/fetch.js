@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:25:26 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-04-24 00:36:55
+ * @Last Modified time: 2018-04-26 17:33:28
  * fetch参考：https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
  */
 import 'whatwg-fetch';
@@ -42,6 +42,7 @@ export default function _fetch(url, options) {
                 return result.data;
             } else {
                 console.warn(result.message);
+                return result;
             }
         });
 }

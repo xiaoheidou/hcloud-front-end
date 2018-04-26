@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { } from '../logic/actions';
+import { getList } from '../logic/actions';
 import Monitor from '../components/Monitor';
 
 class MonitorContainer extends React.Component {
@@ -16,7 +16,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
     return {
-        dispatch: dispatch
+        dispatch: dispatch,
+        getList: () => dispatch(getList())
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MonitorContainer);

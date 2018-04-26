@@ -1,7 +1,15 @@
 import React from 'react';
+import { Line } from 'SRC_PATH/components/Echarts';
 
 class Monitor extends React.Component {
-    componentDidMount() {
+    state = {}
+
+    async componentDidMount() {
+        const { getList } = this.props;
+        const data = await getList();
+        this.setState({
+            data: data
+        });
     }
 
     render() {
@@ -10,6 +18,10 @@ class Monitor extends React.Component {
         return <div className="monitor">
             <h3 className="monitor-title"></h3>
             hostKey: {match.params.hostKey}
+
+            <div style={{ width: 400, height: 300 }}>
+                <Line data={this.state.data} />
+            </div>
         </div>;
     }
 }
