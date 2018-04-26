@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getList } from '../actions';
+import { getList } from '../logic/actions';
 import Resource from '../components/Resource';
 
 class ResourceContainer extends React.Component {

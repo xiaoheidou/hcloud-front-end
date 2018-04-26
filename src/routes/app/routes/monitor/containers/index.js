@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { } from '../actions';
+import { } from '../logic/actions';
 import Monitor from '../components/Monitor';
 
 class MonitorContainer extends React.Component {
