@@ -2,7 +2,7 @@ import React from 'react';
 import { Line } from 'SRC_PATH/components/Echarts';
 import { Card, Icon, Modal } from 'antd';
 
-function Title(props) {
+function LineCardTitle(props) {
     return <div>{props.title}<small>{props.subtitle}</small></div>;
 }
 
@@ -13,15 +13,7 @@ class LineCard extends React.Component {
         e.preventDefault();
         this.setState(prevState => ({
             visible: !prevState.visible
-        }), (a) => {
-            // console.log(a);
-            // console.log(this.chartInstance);
-        });
-    }
-
-    onInstance = (instance) => {
-        console.log(instance);
-        this.chartInstance = instance;
+        }));
     }
 
     render() {
@@ -30,7 +22,7 @@ class LineCard extends React.Component {
         return <React.Fragment>
             <Card
                 className="chart-panel"
-                title={<Title title={'CPU'} subtitle={'副标题'} />}
+                title={<LineCardTitle title={'CPU'} subtitle={'副标题'} />}
                 extra={<Icon type="eye" onClick={this.toggleModal} />}
             >
                 <Line data={data} />
@@ -38,12 +30,13 @@ class LineCard extends React.Component {
             <Modal
                 className="chart-preview-modal"
                 width="100%"
-                title={<Title title={'CPU'} subtitle={'副标题'} />}
+                title={<LineCardTitle title={'CPU'} subtitle={'副标题'} />}
                 visible={this.state.visible}
                 footer={null}
                 onCancel={this.toggleModal}
+                destroyOnClose={true}
             >
-                <Line data={data} onInstance={this.onInstance} />
+                <Line data={data} />
             </Modal>
         </React.Fragment>;
     }

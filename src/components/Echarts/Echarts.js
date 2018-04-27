@@ -7,10 +7,12 @@ const defaultOption = {
         letf: 20,
         right: 20,
         top: 20,
-        bottom: 30
+        bottom: 30,
+        // containLabel: true
     }
 };
 
+//默认主题
 const commonAxis = {
     splitLine: {
         lineStyle: {
@@ -44,7 +46,7 @@ const defaultTheme = {
             color: '#5d5d5d'
         },
     })
-}; //默认主题
+};
 
 class Echarts extends Component {
     // 初始化实例
@@ -57,7 +59,6 @@ class Echarts extends Component {
             this.chartInstance = echarts.init(dom, extend(true, {}, defaultTheme, theme), addition);
 
             if (typeof onInstance === 'function') {
-                console.log(this.chartInstance);
                 onInstance(this.chartInstance);
             }
             return this.chartInstance;
@@ -72,7 +73,7 @@ class Echarts extends Component {
         }, 0);
     }
 
-    componentDidUpdate() {
+    draw = () => {
         if (!this.chartInstance) {
             this.initInstance().then((a) => {
                 this.setOption();
@@ -80,6 +81,14 @@ class Echarts extends Component {
         } else {
             this.setOption();
         }
+    }
+
+    componentDidMount() {
+        this.draw();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        this.draw();
     }
 
     componentWillUnmount() {
