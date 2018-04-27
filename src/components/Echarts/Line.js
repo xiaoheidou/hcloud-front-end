@@ -32,7 +32,9 @@ class Line extends Component {
     }
 
     render() {
-        return <Echarts option={this.getOption()} />;
+        const { onInstance } = this.props;
+
+        return <Echarts option={this.getOption()} onInstance={onInstance} />;
     }
 }
 

@@ -2,19 +2,64 @@ import React, { Component } from 'react';
 import extend from 'SRC_PATH/utils/extend';
 
 // 默认设置
-const defaultOption = {};
-const defaultTheme = {}; //默认主题
+const defaultOption = {
+    grid: {
+        letf: 20,
+        right: 20,
+        top: 20,
+        bottom: 30
+    }
+};
+
+const commonAxis = {
+    splitLine: {
+        lineStyle: {
+            type: 'dashed',
+            color: '#eeeeee'
+        }
+    },
+    axisLabel: {
+        textStyle: {
+            color: '#5d5d5d'
+        }
+    },
+};
+const defaultTheme = {
+    color: ['#1890FF', '#2FC25B', '#FACC14', '#223273', '#8543E0', '#13C2C2', '#3436C7', '#F04864'],
+    valueAxis: extend({}, commonAxis, {
+        axisLine: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+    }),
+    categoryAxis: extend({}, commonAxis, {
+        axisLine: {
+            lineStyle: {
+                color: '#cccccc'
+            }
+        },
+        axisTick: {
+            color: '#5d5d5d'
+        },
+    })
+}; //默认主题
 
 class Echarts extends Component {
     // 初始化实例
     initInstance = () => {
         return import(/* webpackChunkName: 'echarts' */'echarts').then(echarts => {
-            const { theme = {}, addition = {}/* 附加参数 */ } = this.props;
+            const { theme = {}, addition = {}/* 附加参数 */, onInstance } = this.props;
             // 初始化区域坐标
             const dom = this.element;
 
             this.chartInstance = echarts.init(dom, extend(true, {}, defaultTheme, theme), addition);
 
+            if (typeof onInstance === 'function') {
+                console.log(this.chartInstance);
+                onInstance(this.chartInstance);
+            }
             return this.chartInstance;
         });
     }
@@ -22,6 +67,9 @@ class Echarts extends Component {
     setOption() {
         const { option } = this.props;
         this.chartInstance.setOption(extend(true, {}, defaultOption, option));
+        setTimeout(() => {
+            this.chartInstance.resize();
+        }, 0);
     }
 
     componentDidUpdate() {
