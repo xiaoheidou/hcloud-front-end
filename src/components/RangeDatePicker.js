@@ -29,6 +29,7 @@ class RangeDatePicker extends Component {
             locale={locale}
             value={this.state.value}
             format="YYYY-MM-DD HH:mm:ss"
+            allowClear={false}
             onChange={this.onChange}
         />;
     }
