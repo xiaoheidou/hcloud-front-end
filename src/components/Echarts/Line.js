@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Echarts from './Echarts';
+import extend from 'SRC_PATH/utils/extend';
 
 class Line extends Component {
     getOption = () => {
@@ -23,8 +24,10 @@ class Line extends Component {
 
         defaultOption.xAxis.data = data.axis;
         const series = data.data.map(dt => {
-            dt.type = 'line';
-            return dt;
+            return extend(true, {
+                type: 'line',
+                smooth: true
+            }, dt);
         });
         defaultOption.series = series;
 

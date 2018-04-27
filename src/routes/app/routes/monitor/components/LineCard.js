@@ -2,10 +2,6 @@ import React from 'react';
 import { Line } from 'SRC_PATH/components/Echarts';
 import { Card, Icon, Modal } from 'antd';
 
-function LineCardTitle(props) {
-    return <div>{props.title}<small>{props.subtitle}</small></div>;
-}
-
 class LineCard extends React.Component {
     state = { visible: false }
 
@@ -22,8 +18,8 @@ class LineCard extends React.Component {
         return <React.Fragment>
             <Card
                 className="chart-panel"
-                title={<LineCardTitle title={'CPU'} subtitle={'副标题'} />}
-                extra={<Icon type="eye" onClick={this.toggleModal} />}
+                title={<LineCardTitle title={'CPU'} subtitle={'subtitle'} />}
+                extra={<Icon type="scan" onClick={this.toggleModal} />}
             >
                 <Line data={data} />
             </Card>
@@ -43,3 +39,11 @@ class LineCard extends React.Component {
 }
 
 export default LineCard;
+
+/**
+ * 卡片标题
+ * @param {*} props 
+ */
+function LineCardTitle(props) {
+    return <div>{props.title}<small>{props.subtitle}</small></div>;
+}

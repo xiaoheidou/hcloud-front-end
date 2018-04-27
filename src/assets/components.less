@@ -1,41 +1,44 @@
-.chart-panel {
-    .ant-card-head {
-        min-height: auto;
-    }
-    .ant-card-head {
-        padding: 0 16px;
-        border-color: #eeeeee;
-    }
-    .ant-card-head-title {
-        padding: 8px 0;
-        color: rgba(0, 0, 0, 0.65);
-        small {
-            margin-left: 6px;
-            font-weight: normal;
-            font-size: 12px;
+body {
+    .chart-panel {
+        border-radius: 0px;
+        padding: 0 10px;
+        .ant-card-head {
+            min-height: auto;
+        }
+        .ant-card-head {
+            padding: 8px 16px;
+            border-color: #e7ecf1;
+        }
+        .ant-card-head-title {
+            padding: 8px 0;
+            color: rgba(0, 0, 0, 0.65);
+            small {
+                margin-left: 6px;
+                font-weight: normal;
+                font-size: 12px;
+                color: #9eacb4;
+            }
+        }
+        .ant-card-extra {
+            padding: 8px 0;
+            cursor: pointer;
+        }
+        .ant-card-body {
+            padding: 8px;
+            height: 300px;
+        }
+        &.ant-card-bordered {
+            border-color: #e7ecf1;
         }
     }
-    .ant-card-extra {
-        padding: 8px 0;
-        cursor: pointer;
-    }
-    .ant-card-body {
-        padding: 8px;
-        height: 240px;
-    }
-    .ant-card-bordered {
-        border-color: #eeeeee;
-    }
-}
-
-body {
     .chart-preview-modal {
         top: 0;
         height: 100%;
-        padding: 10px;
+        padding: 0px;
         .ant-modal-content {
             height: 100%;
             padding-bottom: 60px;
+            border-radius: 0;
         }
         .ant-modal-body {
             height: 100%;

@@ -1,7 +1,21 @@
 @import "../../../assets/mixins";
 .app {}
 
-.app-sider {}
+.app-sider {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    background: #364150;
+    .ant-menu-item {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .ant-menu-dark .ant-menu-item-selected {
+        background-color: #32c5d2;
+    }
+}
 
 .app-logo {
     height: 32px;
@@ -14,8 +28,14 @@
 }
 
 .app-header {
-    background: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 200px;
+    right: 0;
+    z-index: 9;
     padding: 0;
+    background: #2b3643;
+    color: #ffffff;
 }
 
 .app-trigger {
@@ -59,9 +79,20 @@
     }
 }
 
+.app-content-layout {
+    padding-top: 64px;
+    padding-left: 200px;
+}
+
 .app-content {
-    margin: 16px;
-    padding: 16px;
+    padding: 20px;
     background: #ffffff;
     min-height: 700px;
+}
+
+.app-content-layout-collapsed {
+    padding-left: 80px;
+    .app-header {
+        left: 80px;
+    }
 }

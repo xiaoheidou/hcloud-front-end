@@ -22,12 +22,13 @@ const commonAxis = {
     },
     axisLabel: {
         textStyle: {
-            color: '#5d5d5d'
+            color: '#9eacb4'
         }
     },
 };
 const defaultTheme = {
-    color: ['#1890FF', '#2FC25B', '#FACC14', '#223273', '#8543E0', '#13C2C2', '#3436C7', '#F04864'],
+    color: ['#fec588', '#b6cffc', '#1890FF', '#223273', '#8543E0', '#13C2C2', '#3436C7', '#F04864'],
+    // color: ['#FACC14', '#2FC25B', '#1890FF', '#223273', '#8543E0', '#13C2C2', '#3436C7', '#F04864'],
     valueAxis: extend({}, commonAxis, {
         axisLine: {
             show: false

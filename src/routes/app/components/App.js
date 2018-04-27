@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:31:38 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-04-25 14:16:25
+ * @Last Modified time: 2018-04-27 22:13:27
  */
 import React from 'react';
 import { Layout } from 'antd';
@@ -31,7 +31,7 @@ class App extends React.Component {
         return <div className="app">
             <Layout>
                 <AppSider collapsed={this.state.collapsed} />
-                <Layout>
+                <Layout className={`app-content-layout ${this.state.collapsed ? 'app-content-layout-collapsed ' : ''}`}>
                     <AppHeader collapsed={this.state.collapsed} toggle={this.toggle} />
                     <Content className="app-content">
                         <AppRouter {...this.props} />
