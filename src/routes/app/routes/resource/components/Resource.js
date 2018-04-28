@@ -1,68 +1,99 @@
 import React from 'react';
-import { Table } from 'antd';
-import { Link } from 'react-router-dom';
+import DataTables from 'SRC_PATH/components/DataTables';
 
 class Resource extends React.Component {
     componentDidMount() {
-        const { getList } = this.props;
-        getList();
+        // const { getList } = this.props;
+        // getList();
     }
 
     render() {
-        const { resource } = this.props;
-        const { list } = resource;
-        const dataSource = list.map((item, i) => {
-            item.key = i;
-            return item;
-        });
+        // const { resource } = this.props;
+        // const { list } = resource;
 
-        const columns = [{
-            title: '名称',
-            width: '10%',
-            dataIndex: 'name',
-            render: (text, row, index) => <Link to={`/app/monitor/${row.host_key}`}>{text || '未定义'}</Link>
-        }, {
-            title: '描述',
-            width: '10%',
-            dataIndex: 'description',
-        }, {
-            title: '内网IP地址',
-            width: '14%',
-            dataIndex: 'privateip',
-        }, {
-            title: '操作系统',
-            width: '10%',
-            dataIndex: 'os_type',
-        }, {
-            title: '监控状态',
-            width: '10%',
-            dataIndex: 'monitor_status',
-        }, {
-            title: 'cpu物理核数',
-            width: '10%',
-            dataIndex: 'cpu_physical',
-        }, {
-            title: 'cpu核数',
-            width: '10%',
-            dataIndex: 'cpu_process',
-        }, {
-            title: '内存总数',
-            width: '10%',
-            dataIndex: 'memory_total',
-        }, {
-            title: '硬盘空间',
-            width: '16%',
-            dataIndex: 'disk_usage',
-            render: (text) => text.split(',').map(disk => <div key={disk}>{disk}</div>)
-        }/* , {
-            title: '操作',
-            width: '5%',
-            dataIndex: 'action',
-            render: () => <a href="#"><Icon type="edit" /></a>
-        } */];
+        let testData = [
+            {
+                'cpu_physical': '1',
+                'cpu_process': '2',
+                'create_time': '2018-04-22 22:00:37',
+                'description': 'unlabeled',
+                'disk_usage': 'vda1:8202641408',
+                'host_key': '257aa4a4-4632-11e8-abe3-fa163ea5419d',
+                'memory_total': '8202641408',
+                'monitor_status': 'running',
+                'name': 'title',
+                'os_type': 'linux',
+                'privateip': '192.168.0.32',
+                'project_id': '0',
+                'remark': '',
+                'state': 'online',
+                'update_time': '2018-04-22 22:00:37',
+                'user_id': '1'
+            },
+            {
+                'cpu_physical': '2',
+                'cpu_process': '4',
+                'create_time': '2018-04-22 22:02:20',
+                'description': 'unlabeled',
+                'disk_usage': 'vda1:32200720384,vdb:105554829312',
+                'host_key': '847aa4a4-4632-11e8-abe3-fa163ea5419d',
+                'memory_total': '16658059264',
+                'monitor_status': 'running',
+                'name': 'title',
+                'os_type': 'linux',
+                'privateip': '192.168.0.92',
+                'project_id': '0',
+                'remark': 'title',
+                'state': 'online',
+                'update_time': '2018-04-22 22:02:20',
+                'user_id': '1'
+            }
+        ];
+        for (let i = 0; i < 5; i++) {
+            testData = testData.concat(testData);
+        }
+
+        const heads = [
+            {
+                'field': 'name',
+                'alias': '名称'
+            },
+            {
+                'field': 'description',
+                'alias': '描述'
+            },
+            {
+                'field': 'privateip',
+                'alias': '内网IP地址'
+            },
+            {
+                'field': 'os_type',
+                'alias': '操作系统'
+            },
+            {
+                'field': 'monitor_status',
+                'alias': '监控状态'
+            },
+            {
+                'field': 'cpu_physical',
+                'alias': 'cpu物理核数'
+            },
+            {
+                'field': 'cpu_process',
+                'alias': 'cpu核数'
+            },
+            {
+                'field': 'memory_total',
+                'alias': '内存总数'
+            },
+            {
+                'field': 'disk_usage',
+                'alias': '硬盘空间'
+            }
+        ];
 
         return <div className="resource">
-            <Table dataSource={dataSource} bordered columns={columns} pagination={false} />
+            <DataTables data={testData} heads={heads} />
         </div>;
     }
 }

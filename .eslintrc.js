@@ -9,7 +9,8 @@ module.exports = {
     },
     // 自定义全局变量
     "globals": {
-        "env": true
+        "env": true,
+        "$": true
     },
     // 启用推荐的规则（http://eslint.cn/docs/rules/）
     "extends": ["eslint:recommended", "plugin:react/recommended"],
@@ -53,17 +54,17 @@ module.exports = {
         //禁用 console
         "no-console": [
             "warn",
-            {"allow": ["warn", "error"]}
+            { "allow": ["warn", "error"] }
         ],
         // 禁止未使用过的变量（参数除外）
         "no-unused-vars": [
             "error",
-            {"args": "none"}
+            { "args": "none" }
         ],
         // 只提示声明了propTypes的组件的错误
         "react/prop-types": [
             "warn",
-            {"skipUndeclared": true}
+            { "skipUndeclared": true }
         ]
     }
 };
