@@ -1,9 +1,9 @@
 import React from 'react';
 
 import 'datatables.net';
-import 'datatables.net-dt/css/jquery.datatables.css';
+// import 'datatables.net-dt/css/jquery.datatables.css';
 import 'datatables.net-buttons';
-import 'datatables.net-buttons-dt/css/buttons.dataTables.css';
+// import 'datatables.net-buttons-dt/css/buttons.dataTables.css';
 import 'datatables.net-buttons/js/buttons.print';
 import 'datatables.net-buttons/js/buttons.colVis';
 import 'datatables.net-buttons/js/buttons.html5';
@@ -42,7 +42,12 @@ class DataTables extends React.Component {
                     },
                     'print': '打印'
                 },
-                buttons: ['copy', 'excel', 'csv', 'pdf', 'print']
+                buttons: [{ extend: 'print', className: 'btn dark btn-outline',text:'打印' },
+                { extend: 'copy', className: 'btn red btn-outline' },
+                { extend: 'pdf', className: 'btn green btn-outline' },
+                { extend: 'excel', className: 'btn purple btn-outline ' },
+                { extend: 'csv', className: 'btn yellow btn-outline ' },
+                { extend: 'colvis', className: 'btn dark btn-outline', text: 'Columns'}]
             });
 
             oTable.buttons().container().appendTo(elem.find('.datatables-button'));
@@ -54,7 +59,7 @@ class DataTables extends React.Component {
 
         return <div className="datatables" ref={elem => { this.element = elem; }}>
             <div className="datatables-button"></div>
-            <table>
+            <table className="table-bordered">
                 <thead>
                     <tr>
                         {heads.map(h => {
