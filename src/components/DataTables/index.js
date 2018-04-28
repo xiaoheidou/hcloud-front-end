@@ -12,11 +12,11 @@ import './assets/style.less';
 
 class DataTables extends React.Component {
     init = () => {
-        const { data = [] } = this.props;
+        const { data = [], option = {} } = this.props;
         if (data.length) {
             const elem = $(this.element);
 
-            const oTable = elem.find('table').DataTable({
+            const oTable = elem.find('table').DataTable($.extend(true, {
                 'language': {
                     'sProcessing': '处理中...',
                     'sLengthMenu': '显示 _MENU_ 项结果',
@@ -42,13 +42,16 @@ class DataTables extends React.Component {
                     },
                     'print': '打印'
                 },
+
                 buttons: [{ extend: 'print', className: 'btn dark btn-outline',text:'打印' },
                 { extend: 'copy', className: 'btn red btn-outline' },
                 { extend: 'pdf', className: 'btn green btn-outline' },
                 { extend: 'excel', className: 'btn purple btn-outline ' },
                 { extend: 'csv', className: 'btn yellow btn-outline ' },
                 { extend: 'colvis', className: 'btn dark btn-outline', text: 'Columns'}]
-            });
+            },option));
+
+
 
             oTable.buttons().container().appendTo(elem.find('.datatables-button'));
         }
@@ -71,7 +74,8 @@ class DataTables extends React.Component {
                     {data.map(dt => {
                         return <tr key={dt.id}>
                             {heads.map((h) => {
-                                return <td key={'td_' + h.field}>{dt[h.field]}</td>;
+                                const text = typeof h.render === 'function' ? h.render(dt[h.field], dt) : dt[h.field];
+                                return <td key={'td_' + h.field}>{text}</td>;
                             })}
                         </tr>;
                     })}

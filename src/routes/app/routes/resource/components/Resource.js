@@ -1,5 +1,6 @@
 import React from 'react';
 import DataTables from 'SRC_PATH/components/DataTables';
+import { Link } from 'react-router-dom';
 
 class Resource extends React.Component {
     componentDidMount() {
@@ -56,7 +57,10 @@ class Resource extends React.Component {
         const heads = [
             {
                 'field': 'name',
-                'alias': '名称'
+                'alias': '名称',
+                render: (text, data) => {
+                    return <Link to={`/app/monitor/${data.host_key}`}>{text}</Link>;
+                }
             },
             {
                 'field': 'description',
@@ -88,9 +92,22 @@ class Resource extends React.Component {
             },
             {
                 'field': 'disk_usage',
-                'alias': '硬盘空间'
+                'alias': '硬盘空间',
+                render: (text, data) => {
+                    return text.split(',').map(disk => <div key={disk}>{disk}</div>);
+                }
             }
         ];
+
+        // const option = {
+        //     columnDefs: [{
+        //         targets: 0,
+        //         render: function (field, type, row, meta) {
+        //             console.log(row, meta);
+        //             return '<a href="/app/monitor/' + testData + '">aaa</a>';
+        //         }
+        //     }]
+        // };
 
         return <div className="resource">
             <DataTables data={testData} heads={heads} />

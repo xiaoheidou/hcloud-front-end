@@ -1,0 +1,147 @@
+.datatables .datatables-button {
+  text-align: right;
+  padding: 0px 0 20px 0;
+  border-bottom: 1px solid #e7ecf1;
+}
+.datatables .datatable-title {
+  float: left;
+}
+.datatables .dataTables_wrapper {
+  margin-top: 20px;
+}
+.datatables .dataTable {
+  margin: 0;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: 1px solid #e7ecf1;
+}
+.datatables .dataTable tr td,
+.datatables .dataTable tr th {
+  padding: 10px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #e7ecf1;
+  border: 1px solid #e7ecf1;
+}
+.datatables .btn {
+  padding: 5px 10px!important;
+  margin-right: 5px;
+  font-size: 12px;
+}
+.datatables .red {
+  color: #e7505a;
+}
+.datatables .red.btn-outline {
+  border-color: #e7505a;
+  text-align: center;
+}
+.datatables .red.btn-outline:hover {
+  background: #e7505a;
+  color: #ffffff;
+}
+.datatables .yellow {
+  color: #c49f47;
+}
+.datatables .yellow.btn-outline {
+  border-color: #c49f47;
+  text-align: center;
+}
+.datatables .yellow.btn-outline:hover {
+  background: #c49f47;
+  color: #ffffff;
+}
+.datatables .green {
+  color: #32c5d2;
+}
+.datatables .green.btn-outline {
+  border-color: #32c5d2;
+  text-align: center;
+}
+.datatables .green.btn-outline:hover {
+  background: #32c5d2;
+  color: #ffffff;
+}
+.datatables .dark.btn-outline {
+  border-color: #333;
+}
+.datatables .dark.btn-outline:hover {
+  background: #333;
+  color: #ffffff;
+}
+.datatables .dt-button {
+  background: transparent;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.datatables .dt-button-collection {
+  position: absolute;
+  top: 2px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 1px;
+  right: 0;
+}
+.datatables .dt-button-collection .dt-button {
+  background: #f1f1f1;
+  width: 100%;
+  margin-bottom: 2px;
+  border: 0;
+}
+.datatables .dt-button-collection .dt-button:hover {
+  background: #ffffff;
+  color: #32c5d2;
+}
+.datatables .dt-button-collection .dt-button.active {
+  color: #32c5d2;
+}
+.datatables .dt-buttons {
+  text-align: right;
+}
+.datatables .dataTables_length {
+  float: left;
+}
+.datatables .dataTables_length select {
+  border: 1px solid #ccc;
+  padding: 3px 6px;
+}
+.datatables .dataTables_filter {
+  float: right;
+  margin-bottom: 20px;
+}
+.datatables .dataTables_filter input {
+  padding: 3px 6px;
+  border: 1px solid #ccc;
+  background: transparent;
+}
+.datatables .dataTables_info {
+  margin-top: 20px;
+  float: left;
+}
+.datatables .dataTables_paginate {
+  margin-top: 20px;
+  float: right;
+  color: #333;
+}
+.datatables .dataTables_paginate .paginate_button {
+  display: inline-block;
+  padding: 3px 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.datatables .dataTables_paginate .paginate_button:first-child {
+  border-left: 1px solid #ccc;
+}
+.datatables .dataTables_paginate .previous,
+.datatables .dataTables_paginate .next {
+  display: inline-block;
+  padding: 3px 16px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  border-radius: 2px;
+}
+.datatables .dataTables_paginate .next {
+  margin-left: 10px;
+  margin-right: 0px;
+}
