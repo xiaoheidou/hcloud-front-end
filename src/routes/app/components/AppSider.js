@@ -7,6 +7,7 @@
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
+const { SubMenu } = Menu
 
 const Sider = Layout.Sider;
 
@@ -19,13 +20,22 @@ class AppSider extends React.Component {
             collapsed={collapsed}
         >
             <div className="app-logo">{!collapsed ? 'HCLOUD' : 'H'}</div>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                <Menu.Item key="1">
+            <Menu theme="dark" mode="inline" defaultOpenKeys={['sub1']} defaultSelectedKeys={['1']}>
+                {/* <Menu.Item key="1">
                     <Link to="/app">
                         <Icon type="profile" />
                         <span>资源管理</span>
                     </Link>
-                </Menu.Item>
+                </Menu.Item> */}
+                <SubMenu key="sub1" title={<span><Icon type="profile" />资源管理</span>}>
+                    <Menu.Item key="1">
+                        <Icon type="profile" />
+                        <span>资源列表</span>
+                    </Menu.Item>
+                    <Menu.Item key="2">option2</Menu.Item>
+                    <Menu.Item key="3">option3</Menu.Item>
+                    <Menu.Item key="4">option4</Menu.Item>
+                </SubMenu>
             </Menu>
         </Sider>;
     }
