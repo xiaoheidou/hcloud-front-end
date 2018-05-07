@@ -140,18 +140,19 @@
         margin-top: 20px;
         float: right;
         color: #333;
-        
-        .current{
-
-        }
         .paginate_button {
             display: inline-block;
             padding: 3px 10px;
             border-top:1px solid #ccc; 
             border-bottom:1px solid #ccc;
             border-right:1px solid #ccc;
+            color: rgba(0,0,0,.65);
             &:first-child{
                 border-left:1px solid #ccc; 
+            }
+            &:hover{
+                color: #ffffff;
+                background: #32c5d2;
             }
         }
         .previous,.next{
@@ -164,6 +165,10 @@
         .next{
             margin-left:10px;
             margin-right:0px;
+        }
+        .current{
+            color: #ffffff;
+            background: #32c5d2;
         }
         
     }

@@ -129,9 +129,14 @@
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
+  color: rgba(0, 0, 0, 0.65);
 }
 .datatables .dataTables_paginate .paginate_button:first-child {
   border-left: 1px solid #ccc;
+}
+.datatables .dataTables_paginate .paginate_button:hover {
+  color: #ffffff;
+  background: #32c5d2;
 }
 .datatables .dataTables_paginate .previous,
 .datatables .dataTables_paginate .next {
@@ -144,4 +149,8 @@
 .datatables .dataTables_paginate .next {
   margin-left: 10px;
   margin-right: 0px;
+}
+.datatables .dataTables_paginate .current {
+  color: #ffffff;
+  background: #32c5d2;
 }
