@@ -13,7 +13,7 @@ import './assets/style.less';
 class DataTables extends React.Component {
     init = () => {
         const { data = [], option = {} } = this.props;
-        if (data.length) {
+        if (data) {
             const elem = $(this.element);
 
             const oTable = elem.find('table').DataTable($.extend(true, {
