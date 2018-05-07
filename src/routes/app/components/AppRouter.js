@@ -7,7 +7,7 @@ class AppRouter extends React.Component {
         const { match } = this.props;
 
         return <Switch>
-            <Route path={`${match.url}/resource`} component={
+            <Route path={`${match.url}/resource/:type`} component={
                 Loadable({
                     loader: () => import(/* webpackChunkName: "resource" */'../routes/resource'),
                     loading: () => null
@@ -19,7 +19,7 @@ class AppRouter extends React.Component {
                     loading: () => null
                 })
             } />
-            <Redirect from="/" to={`${match.url}/resource`} />
+            <Redirect from="/" to={`${match.url}/resource/host`} />
         </Switch>;
     }
 }
