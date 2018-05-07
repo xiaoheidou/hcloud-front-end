@@ -1,175 +1,168 @@
 .datatables {
-    
-    .datatables-button{
+    .datatables-button {
         text-align: right;
         padding: 0px 0 20px 0;
         border-bottom: 1px solid #e7ecf1;
     }
-    .datatable-title{
+    .datatable-title {
         float: left;
     }
-    .dataTables_wrapper{
+    .dataTables_wrapper {
         margin-top: 20px;
     }
-
-
-// 表格
-
-    .dataTable{
+    /* 表格 */
+    .dataTable {
         margin: 0;
-        width:100%;
+        width: 100%;
         border-spacing: 0;
         border-collapse: collapse;
         border: 1px solid #e7ecf1;
-        tr{
-            td,th{
+        tr {
+            td,
+            th {
                 padding: 10px;
                 line-height: 1.42857143;
                 vertical-align: top;
-                border-top: 1px solid #e7ecf1;    
-                border: 1px solid #e7ecf1; 
+                border-top: 1px solid #e7ecf1;
+                border: 1px solid #e7ecf1;
             }
         }
-        // &.table-bordered {
-        //     border: 1px solid #ddd;
-        // }
+        /* &.table-bordered {
+            border: 1px solid #ddd;
+        } */
     }
-
-    // 按钮颜色
-    .btn{
-        padding:5px 10px!important;
+    /*  按钮颜色 */
+    .btn {
+        padding: 5px 10px !important;
         margin-right: 5px;
         font-size: 12px;
-        
     }
-    .red{
-        color:#e7505a;
+    .red {
+        color: #e7505a;
     }
-    .red.btn-outline{
+    .red.btn-outline {
         border-color: #e7505a;
         text-align: center;
-        &:hover{
+        &:hover {
             background: #e7505a;
             color: #ffffff;
         }
     }
-    .yellow{
-        color:#c49f47;
+    .yellow {
+        color: #c49f47;
     }
-    .yellow.btn-outline{
+    .yellow.btn-outline {
         border-color: #c49f47;
         text-align: center;
-        &:hover{
+        &:hover {
             background: #c49f47;
             color: #ffffff;
         }
     }
-    .green{
-        color:#32c5d2;
+    .green {
+        color: #32c5d2;
     }
-    .green.btn-outline{
+    .green.btn-outline {
         border-color: #32c5d2;
         text-align: center;
-        &:hover{
+        &:hover {
             background: #32c5d2;
             color: #ffffff;
         }
     }
-    .dark.btn-outline{
+    .dark.btn-outline {
         border-color: #333;
-        &:hover{
+        &:hover {
             background: #333;
             color: #ffffff;
         }
     }
-    .dt-button{
+    .dt-button {
         background: transparent;
         border: 1px solid #ccc;
         cursor: pointer;
     }
-    .dt-button-collection{
-       position: absolute;
-       top: 2px;
-       background: #ffffff;
-       border: 1px solid #ccc;
-       padding:1px;
-       right: 0;
-       .dt-button{
-           background: #f1f1f1;
-           width: 100%;
-           margin-bottom:2px;
-           border: 0;
-           &:hover{
-               background: #ffffff;
-               color: #32c5d2;
-           }
-           &.active{
-               color: #32c5d2;
-           }
-       }
+    .dt-button-collection {
+        position: absolute;
+        top: 2px;
+        background: #ffffff;
+        border: 1px solid #ccc;
+        padding: 1px;
+        right: 0;
+        .dt-button {
+            background: #f1f1f1;
+            width: 100%;
+            margin-bottom: 2px;
+            border: 0;
+            &:hover {
+                background: #ffffff;
+                color: #32c5d2;
+            }
+            &.active {
+                color: #32c5d2;
+            }
+        }
     }
-    .dt-buttons{
+    .dt-buttons {
         text-align: right;
     }
-
-    // 设置每页数据
-    .dataTables_length{
+    /*  设置每页数据 */
+    .dataTables_length {
         float: left;
-        select{
-            border:1px solid #ccc;
+        select {
+            border: 1px solid #ccc;
             padding: 3px 6px;
         }
     }
-    // 搜索
-    .dataTables_filter{
+    /* 搜索 */
+    .dataTables_filter {
         float: right;
         margin-bottom: 20px;
-        input{
+        input {
             padding: 3px 6px;
             border: 1px solid #ccc;
             background: transparent;
         }
     }
-
-    // 显示数据
-    .dataTables_info{
+    /* 显示数据 */
+    .dataTables_info {
         margin-top: 20px;
         float: left;
     }
-    .dataTables_paginate{
+    .dataTables_paginate {
         margin-top: 20px;
         float: right;
         color: #333;
         .paginate_button {
             display: inline-block;
             padding: 3px 10px;
-            border-top:1px solid #ccc; 
-            border-bottom:1px solid #ccc;
-            border-right:1px solid #ccc;
-            color: rgba(0,0,0,.65);
-            &:first-child{
-                border-left:1px solid #ccc; 
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            color: rgba(0, 0, 0, .65);
+            &:first-child {
+                border-left: 1px solid #ccc;
             }
-            &:hover{
+            &:hover {
                 color: #ffffff;
                 background: #32c5d2;
             }
         }
-        .previous,.next{
+        .previous,
+        .next {
             display: inline-block;
             padding: 3px 16px;
             border: 1px solid #ccc;
             margin-right: 10px;
             border-radius: 2px;
         }
-        .next{
-            margin-left:10px;
-            margin-right:0px;
+        .next {
+            margin-left: 10px;
+            margin-right: 0px;
         }
-        .current{
+        .current {
             color: #ffffff;
             background: #32c5d2;
         }
-        
     }
 }
