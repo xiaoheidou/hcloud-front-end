@@ -43,13 +43,15 @@ class DataTables extends React.Component {
                     'print': '打印'
                 },
 
-                buttons: [{ extend: 'print', className: 'btn dark btn-outline',text:'打印' },
-                { extend: 'copy', className: 'btn red btn-outline' },
-                { extend: 'pdf', className: 'btn green btn-outline' },
-                { extend: 'excel', className: 'btn purple btn-outline ' },
-                { extend: 'csv', className: 'btn yellow btn-outline ' },
-                { extend: 'colvis', className: 'btn dark btn-outline', text: 'Columns'}]
-            },option));
+                buttons: [
+                    { extend: 'print', className: 'btn dark btn-outline', text: '打印' },
+                    { extend: 'copy', className: 'btn red btn-outline', text: '复制' },
+                    { extend: 'pdf', className: 'btn green btn-outline', text: '导出到pdf' },
+                    { extend: 'excel', className: 'btn purple btn-outline', text: '导出到excel' },
+                    { extend: 'csv', className: 'btn yellow btn-outline', text: '导出到csv' },
+                    { extend: 'colvis', className: 'btn dark btn-outline', text: '列设置' }
+                ]
+            }, option));
 
 
 
