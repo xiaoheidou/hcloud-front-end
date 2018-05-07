@@ -20,21 +20,38 @@ class AppSider extends React.Component {
             collapsed={collapsed}
         >
             <div className="app-logo">{!collapsed ? 'HCLOUD' : 'H'}</div>
-            <Menu theme="dark" mode="inline" defaultOpenKeys={['sub1']} defaultSelectedKeys={['1']}>
+            <Menu theme="dark" mode="inline" defaultOpenKeys={['sub1']} defaultSelectedKeys={['11']}>
                 {/* <Menu.Item key="1">
                     <Link to="/app">
                         <Icon type="profile" />
                         <span>资源管理</span>
                     </Link>
                 </Menu.Item> */}
+                <SubMenu key="sub0" title={<span><Icon type="profile" />个性看板</span>}>
+                    <Menu.Item key="0">个性看板</Menu.Item>
+                </SubMenu>
                 <SubMenu key="sub1" title={<span><Icon type="profile" />资源管理</span>}>
-                    <Menu.Item key="1">
-                        <Icon type="profile" />
-                        <span>资源列表</span>
+                    <Menu.Item key="11">
+                        主机资源
                     </Menu.Item>
-                    <Menu.Item key="2">option2</Menu.Item>
-                    <Menu.Item key="3">option3</Menu.Item>
-                    <Menu.Item key="4">option4</Menu.Item>
+                    <Menu.Item key="12">
+                        nginx/apache
+                    </Menu.Item>
+                    <Menu.Item key="13">tomcat</Menu.Item>
+                    <Menu.Item key="14">MySQL</Menu.Item>
+                    <Menu.Item key="15">Redis/memcache</Menu.Item>
+                    <Menu.Item key="16">Oracle</Menu.Item>
+                </SubMenu>
+                <SubMenu key="sub2" title={<span><Icon type="profile" />报警管理</span>}>
+                    <Menu.Item key="21">报警设置</Menu.Item>
+                    <Menu.Item key="22">历史报警</Menu.Item>
+                    <Menu.Item key="23">报警分析</Menu.Item>
+                </SubMenu>
+                <SubMenu key="sub3" title={<span><Icon type="profile" />分析报告</span>}>
+                    <Menu.Item key="31">成本分析</Menu.Item>
+                </SubMenu>
+                <SubMenu key="sub3" title={<span><Icon type="profile" />用户管理</span>}>
+                    <Menu.Item key="31">用户管理</Menu.Item>
                 </SubMenu>
             </Menu>
         </Sider>;
