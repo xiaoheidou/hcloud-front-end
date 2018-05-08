@@ -2,52 +2,78 @@ import React from 'react';
 import DataTables from 'SRC_PATH/components/DataTables';
 import { Link } from 'react-router-dom';
 
-class Resource extends React.Component {
-    componentDidMount() {
-        // const { getList } = this.props;
-        // getList();
-    }
+import { Modal, Button } from 'antd';
+const confirm = Modal.confirm;
 
+
+class Resource extends React.Component {
+   
     render() {
-        // const { resource } = this.props;
-        // const { list } = resource;
+
+        function showConfirm() {
+            confirm({
+              title: 'Do you Want to delete these items?',
+              content: 'Some descriptions',
+              onOk() {
+                console.log('OK');
+              },
+              onCancel() {
+                console.log('Cancel');
+              },
+            });
+        }
+          
+          function showDeleteConfirm() {
+            confirm({
+              title: '你确定要删除这则报警吗?',
+              content: '',
+              okText: 'Yes',
+              okType: 'danger',
+              cancelText: 'No',
+              onOk() {
+                console.log('OK');
+              },
+              onCancel() {
+                console.log('Cancel');
+              },
+            });
+          }
+
 
         let testData = [
             {
-                'cpu_physical': '1',
-                'cpu_process': '2',
-                'create_time': '2018-04-22 22:00:37',
-                'description': 'unlabeled',
-                'disk_usage': 'vda1:8202641408',
-                'host_key': '257aa4a4-4632-11e8-abe3-fa163ea5419d',
-                'memory_total': '8202641408',
-                'monitor_status': 'running',
-                'name': 'title',
-                'os_type': 'linux',
-                'privateip': '192.168.0.32',
-                'project_id': '0',
-                'remark': '',
-                'state': 'online',
-                'update_time': '2018-04-22 22:00:37',
-                'user_id': '1'
-            },
+                'status': '0',
+                'statistical_period': '5s',
+                'monitor_items': 'memory_usage', 
+                'update_time': '2018-04-09 14:38:44',
+                'service': 'node', 
+                'alert_rules_id': 'a68df93c-3bc0-11e8-a9e5-fa163ea5419d', 
+                'contact_groups': '', 
+                'compute_mode': '>', 
+                'port': '3306', 
+                'statistical_approach': 'max',
+                'create_time': '2018-04-09 14:38:44',
+                'silence_time': '0',
+                'host_id': '114.67.76.75', 
+                'notify_type': '0', 
+                'threshold_value': '1'
+            }, 
             {
-                'cpu_physical': '2',
-                'cpu_process': '4',
-                'create_time': '2018-04-22 22:02:20',
-                'description': 'unlabeled',
-                'disk_usage': 'vda1:32200720384,vdb:105554829312',
-                'host_key': '847aa4a4-4632-11e8-abe3-fa163ea5419d',
-                'memory_total': '16658059264',
-                'monitor_status': 'running',
-                'name': 'title',
-                'os_type': 'linux',
-                'privateip': '192.168.0.92',
-                'project_id': '0',
-                'remark': 'title',
-                'state': 'online',
-                'update_time': '2018-04-22 22:02:20',
-                'user_id': '1'
+                'status': '0',
+                'statistical_period': '5s',
+                'monitor_items': 'memory_usage', 
+                'update_time': '2018-04-09 14:38:44',
+                'service': 'node', 
+                'alert_rules_id': 'a68df93c-3bc0-11e8-a9e5-fa163ea5419d', 
+                'contact_groups': '', 
+                'compute_mode': '>', 
+                'port': '3306', 
+                'statistical_approach': 'max',
+                'create_time': '2018-04-09 14:38:44',
+                'silence_time': '0',
+                'host_id': '114.67.76.75', 
+                'notify_type': '0', 
+                'threshold_value': '1'
             }
         ];
         for (let i = 0; i < 5; i++) {
@@ -56,58 +82,51 @@ class Resource extends React.Component {
 
         const heads = [
             {
-                'field': 'name',
-                'alias': '名称',
+                'field': 'host_id',
+                'alias': '主机地址',
                 render: (text, data) => {
-                    return <Link to={`/app/monitor/${data.host_key}`}>{text}</Link>;
+                    return <Link to={`/app/alarm/${data.host_key}`}>{text}</Link>;
                 }
             },
             {
-                'field': 'description',
-                'alias': '描述'
+                'field': 'port',
+                'alias': '实例端口'
             },
             {
-                'field': 'privateip',
-                'alias': '内网IP地址'
+                'field': 'service',
+                'alias': '监控服务类型'
             },
             {
-                'field': 'os_type',
-                'alias': '操作系统'
+                'field': 'monitor_items',
+                'alias': '监控项'
             },
             {
-                'field': 'monitor_status',
-                'alias': '监控状态'
+                'field': 'statistical_period',
+                'alias': '统计周期'
             },
             {
-                'field': 'cpu_physical',
-                'alias': 'cpu物理核数'
+                'field': 'compute_mode',
+                'alias': '计算方式'
             },
             {
-                'field': 'cpu_process',
-                'alias': 'cpu核数'
-            },
-            {
-                'field': 'memory_total',
-                'alias': '内存总数'
-            },
-            {
-                'field': 'disk_usage',
-                'alias': '硬盘空间',
+                'field': 'threshold_value',
+                'alias': '阈值',
+            },{
+                'field':'',
+                'alias':'操作',
                 render: (text, data) => {
-                    return text.split(',').map(disk => <div key={disk}>{disk}</div>);
+                    return <div>
+                    <Button onClick={showConfirm}>
+                      Confirm
+                    </Button>
+                    <Button onClick={showDeleteConfirm} type="dashed">
+                      Delete
+                    </Button>
+                  </div>;
                 }
             }
         ];
 
-        // const option = {
-        //     columnDefs: [{
-        //         targets: 0,
-        //         render: function (field, type, row, meta) {
-        //             console.log(row, meta);
-        //             return '<a href="/app/monitor/' + testData + '">aaa</a>';
-        //         }
-        //     }]
-        // };
 
         return <div className="resource">
             <DataTables data={testData} heads={heads} />

@@ -13,6 +13,12 @@ class AppRouter extends React.Component {
                     loading: () => null
                 })
             } />
+            <Route path={`${match.url}/alarm/:type`} component={
+                Loadable({
+                    loader: () => import(/* webpackChunkName: "alarm" */'../routes/alarm'),
+                    loading: () => null
+                })
+            } />
             <Route path={`${match.url}/monitor/:hostKey`} component={
                 Loadable({
                     loader: () => import(/* webpackChunkName: "monitor" */'../routes/monitor'),
