@@ -2,16 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getList } from '../logic/actions';
-import Resource from '../components/Resource';
+import AlarmSetting from '../components/AlarmSetting';
 
-class ResourceContainer extends React.Component {
+class AlarmSettingContainer extends React.Component {
     render() {
-        return <Resource {...this.props} />;
+        return <AlarmSetting {...this.props} />;
     }
 }
 
 function mapStateToProps(state, ownProps) {
-    return { resource: state.resource };
+    return { alarmSetting: state.alarmSetting };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
@@ -20,4 +20,4 @@ function mapDispatchToProps(dispatch, ownProps) {
         getList: () => dispatch(getList())
     };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ResourceContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AlarmSettingContainer);

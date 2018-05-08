@@ -1,14 +1,7 @@
-import constants from './constants';
+// import constants from './constants';
 
-const action_handles = {
-    [constants.SET_LIST]: (state, action) => {
-        const list = action.payload;
-        return Object.assign({}, state, { list });
-    }
-};
-const initialState = {
-    list: []
-};
+const action_handles = {};
+const initialState = {};
 
 export default function (state = initialState, action) {
     const handler = action_handles[action.type];
