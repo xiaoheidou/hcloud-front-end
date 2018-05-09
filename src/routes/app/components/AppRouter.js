@@ -13,7 +13,7 @@ class AppRouter extends React.Component {
                     loading: () => null
                 })
             } />
-           <Route path={`${match.url}/alarm`} component={
+            <Route path={`${match.url}/alarm`} component={
                 Loadable({
                     loader: () => import(/* webpackChunkName: "alarm" */'../routes/alarm'),
                     loading: () => null
