@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Select, Row, Col, Input, Button } from 'antd';
+import { Form, Select, Row, Col, Input, Button,Card } from 'antd';
 const Option = Select.Option;
-
+const FormItem = Form.Item;
 const data = [{
     service: 'node',
     instance: [{
@@ -96,78 +96,87 @@ class AlarmSettingForm extends React.Component {
                 <Button onClick={toggleForm}>取消</Button>
                 <Button type="primary">保存</Button>
             </div>
-            <br />
             <Form>
-                <Row gutter={10} >
-                    <Col span={4}>
-                        <Select
-                            placeholder="服务类型"
-                            onChange={this.changeService}
-                        >
-                            {data.map(dt => <Option key={dt.service} >{dt.service}</Option>)}
-                        </Select>
-                    </Col>
-                    <Col span={8}>
-                        <Select
-                            placeholder="实例"
-                            onChange={this.changeInstance}
-                        >
-                            {instanceList.map(instance => <Option key={instance.id} >{instance.name}</Option>)}
-                        </Select>
-                    </Col>
-                </Row>
-                <br />
+                <FormItem>
+                    <Card title="选择告警实例">
+                        <Row gutter={10} >
+                            <Col span={4}>
+                                <Select
+                                    placeholder="服务类型"
+                                    onChange={this.changeService}
+                                >
+                                    {data.map(dt => <Option key={dt.service} >{dt.service}</Option>)}
+                                </Select>
+                            </Col>
+                            <Col span={8}>
+                                <Select
+                                    placeholder="实例"
+                                    onChange={this.changeInstance}
+                                >
+                                    {instanceList.map(instance => <Option key={instance.id} >{instance.name}</Option>)}
+                                </Select>
+                            </Col>
+                        </Row>
+                    </Card>
+                </FormItem>
                 {/* 规则列表 */}
-                {rules.map((rule, index) => {
-                    return <Row key={index} gutter={10} >
-                        <Col span={4}>
-                            <Select
-                                placeholder="监控项"
-                            >
-                                {items.map(item => <Option key={item} >{item}</Option>)}
-                            </Select>
-                        </Col>
-                        <Col span={4}>
-                            <Select
-                                placeholder="计算方式"
-                            >
-                                {computeModes.map(mode => <Option key={mode.value} >{mode.name}</Option>)}
-                            </Select>
-                        </Col>
-                        <Col span={4}>
-                            <Input placeholder="阈值" />
-                        </Col>
-                        <Col span={4}>
-                            <Select
-                                placeholder="统计周期"
-                            >
-                                {periods.map(period => <Option key={period} >{period}</Option>)}
-                            </Select>
-                        </Col>
-                    </Row>;
-                })}
+                <FormItem>
+                <Card title="设置监控规则">
+                    {rules.map((rule, index) => {
+                        return <FormItem><Row key={index} gutter={10} >
+                            <Col span={4}>
+                                <Select
+                                    placeholder="监控项"
+                                >
+                                    {items.map(item => <Option key={item} >{item}</Option>)}
+                                </Select>
+                            </Col>
+                            <Col span={4}>
+                                <Select
+                                    placeholder="计算方式"
+                                >
+                                    {computeModes.map(mode => <Option key={mode.value} >{mode.name}</Option>)}
+                                </Select>
+                            </Col>
+                            <Col span={4}>
+                                <Input placeholder="阈值" />
+                            </Col>
+                            <Col span={4}>
+                                <Select
+                                    placeholder="统计周期"
+                                >
+                                    {periods.map(period => <Option key={period} >{period}</Option>)}
+                                </Select>
+                            </Col>
+                        </Row></FormItem>;
+                    })}
+                    <br />
+                    <Button type="primary" onClick={this.addRule}>添加规则</Button>
+                </Card>
+                </FormItem>
                 <br />
-                <Button type="primary" onClick={this.addRule}>添加规则</Button>
-                <br /><br />
-                <h3>告警接收人</h3>
-                <Row gutter={10} >
-                    <Col span={6}>
-                        <Select
-                            mode="multiple"
-                            placeholder="接收人"
-                        >
-                            {users.map(user => <Option key={user.email} >{user.name}</Option>)}
-                        </Select>
-                    </Col>
-                    <Col span={6}>
-                        <Select
-                            mode="multiple"
-                            placeholder="告警类型"
-                        >
-                            {notifyTypes.map(n => <Option key={n.value} >{n.name}</Option>)}
-                        </Select>
-                    </Col>
-                </Row>
+                <FormItem>
+                <Card title="告警接收人">
+                        <Row gutter={10} >
+                            <Col span={6}>
+                                <Select
+                                    mode="multiple"
+                                    placeholder="接收人"
+                                >
+                                    {users.map(user => <Option key={user.email} >{user.name}</Option>)}
+                                </Select>
+                            </Col>
+                            <Col span={6}>
+                                <Select
+                                    mode="multiple"
+                                    placeholder="告警类型"
+                                >
+                                    {notifyTypes.map(n => <Option key={n.value} >{n.name}</Option>)}
+                                </Select>
+                            </Col>
+                        </Row>
+                    </Card>
+                    </FormItem>
             </Form>
         </div>;
     }
