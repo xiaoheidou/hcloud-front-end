@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Select, Row, Col, Input, Button,Card } from 'antd';
+import { Form, Select, Row, Col, Input, Button,Card,Icon } from 'antd';
 const Option = Select.Option;
 const FormItem = Form.Item;
 const data = [{
@@ -92,8 +92,10 @@ class AlarmSettingForm extends React.Component {
         const { instanceList, rules, items } = this.state;
 
         return <div className="alarm-setting-form">
+            <div className="alarm-setting-back">
+                <a onClick={toggleForm}> <Icon type="double-left" />返回 </a>
+            </div>
             <div className="alarm-setting-handle">
-                <Button onClick={toggleForm}>取消</Button>
                 <Button type="primary">保存</Button>
             </div>
             <Form>
@@ -150,11 +152,9 @@ class AlarmSettingForm extends React.Component {
                             </Col>
                         </Row></FormItem>;
                     })}
-                    <br />
                     <Button type="primary" onClick={this.addRule}>添加规则</Button>
                 </Card>
                 </FormItem>
-                <br />
                 <FormItem>
                 <Card title="告警接收人">
                         <Row gutter={10} >
