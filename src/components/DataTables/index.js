@@ -13,10 +13,11 @@ import './assets/style.less';
 class DataTables extends React.Component {
     init = () => {
         const { data = [], option = {} } = this.props;
+
         if (data) {
             const elem = $(this.element);
 
-            const oTable = elem.find('table').DataTable($.extend(true, {
+            const oTable = this.table = elem.find('table').DataTable($.extend(true, {
                 'language': {
                     'sProcessing': '处理中...',
                     'sLengthMenu': '显示 _MENU_ 项结果',
@@ -53,8 +54,6 @@ class DataTables extends React.Component {
                 ]
             }, option));
 
-
-
             oTable.buttons().container().appendTo(elem.find('.datatables-button'));
         }
     }
@@ -84,6 +83,12 @@ class DataTables extends React.Component {
                 </tbody>
             </table>
         </div>;
+    }
+
+    componentWillReceiveProps() {
+        if (this.table) {
+            this.table.destroy();
+        }
     }
 
     componentDidUpdate(prevProps, prevState) {
