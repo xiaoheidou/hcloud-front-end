@@ -14,15 +14,15 @@ class AlarmSetting extends React.Component {
     }
 
     render() {
-        const { getList } = this.props;
+        const props = {
+            toggleForm: this.toggleForm,
+            ...this.props
+        };
 
         return <div className="alarm-setting" >
             {this.state.isShowForm
-                ? <Form toggleForm={this.toggleForm} />
-                : <List
-                    getList={getList}
-                    toggleForm={this.toggleForm}
-                />
+                ? <Form {...props} />
+                : <List {...props} />
             }
         </div>;
     }

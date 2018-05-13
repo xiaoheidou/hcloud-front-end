@@ -1,8 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getList } from '../logic/actions';
 import AlarmSetting from '../components/AlarmSetting';
+
+import {
+    getList,
+    getInstanceList,
+    getUserList
+} from '../logic/actions';
 
 class AlarmSettingContainer extends React.Component {
     render() {
@@ -17,7 +22,9 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
     return {
         dispatch: dispatch,
-        getList: () => dispatch(getList())
+        getList: () => dispatch(getList()),
+        getInstanceList: () => dispatch(getInstanceList()),
+        getUserList: () => dispatch(getUserList())
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AlarmSettingContainer);

@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-23 17:58:07 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-05-08 00:02:14
+ * @Last Modified time: 2018-05-13 22:34:12
  */
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
@@ -44,7 +44,7 @@ const siders = [{
     title: '报警管理',
     icon: 'bell',
     children: [{
-        title: '报警设置',
+        title: '报警模板',
         route: '/app/alarm/setting'
     }, {
         title: '历史报警',

@@ -1,80 +1,27 @@
 import React from 'react';
-import { Form, Select, Row, Col, Input, Button,Card,Icon } from 'antd';
+import { Form, Select, Row, Col, Input, Button, Card, Icon } from 'antd';
 const Option = Select.Option;
 const FormItem = Form.Item;
-const data = [{
-    service: 'node',
-    instance: [{
-        id: '127.0.0.1',
-        name: '127.0.0.1',
-        items: ['memory_usage', 'cpu']
-    }]
-}];
-
-const computeModes = [
-    {
-        value: '==',
-        name: '等于'
-    }, {
-        value: '!=',
-        name: '不等于'
-    }, {
-        value: '>',
-        name: '大于'
-    }, {
-        value: '<',
-        name: '小于'
-    }, {
-        value: '>=',
-        name: '大于等于'
-    }, {
-        value: '<=',
-        name: '小于等于'
-    }
-];
-
-const periods = ['10m', '30m', '1h', '3h', '1d'];
-
-const users = [{
-    name: 'zhang',
-    email: 'zhang@163.com'
-}, {
-    name: 'ma',
-    email: 'ma@163.com'
-}];
-
-const notifyTypes = [{
-    value: 0,
-    name: 'Email'
-}, {
-    value: 1,
-    name: '短信'
-}];
 
 class AlarmSettingForm extends React.Component {
     state = {
-        instanceList: [],
+        services: [],
+        instances: [],
+        users: [],
         rules: [],
         items: []
     }
 
     // 切换服务类型
     changeService = (v) => {
-        const currentService = data.filter(dt => dt.service === v)[0];
+        const currentService = this.state.services.filter(dt => dt.service === v)[0];
         this.setState({
-            instanceList: currentService.instance
+            instances: currentService.instances,
+            items: currentService.items
         });
     }
 
-    // 改变实例
-    changeInstance = (v) => {
-        const currentInstance = this.state.instanceList.filter(instance => instance.id === v)[0];
-        this.setState({
-            items: currentInstance.items
-        });
-    }
-
-    // 添加实例
+    // 添加规则
     addRule = () => {
         this.setState(prevState => {
             prevState.rules.push({
@@ -87,57 +34,90 @@ class AlarmSettingForm extends React.Component {
         });
     }
 
+    save = () => {
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            } else {
+                console.log(err);
+            }
+        });
+    }
+
+    async componentDidMount() {
+        const { getInstanceList, getUserList } = this.props;
+        const services = await getInstanceList();
+        const users = await getUserList();
+        this.setState({
+            services,
+            users
+        });
+    }
+
     render() {
         const { toggleForm } = this.props;
-        const { instanceList, rules, items } = this.state;
+        const { instances, rules, users, items, services } = this.state;
+        const { getFieldDecorator } = this.props.form;
 
         return <div className="alarm-setting-form">
             <div className="alarm-setting-back">
                 <a onClick={toggleForm}> <Icon type="double-left" />返回 </a>
             </div>
             <div className="alarm-setting-handle">
-                <Button type="primary">保存</Button>
+                <Button type="primary" onClick={this.save}>保存</Button>
             </div>
             <Form>
-                <FormItem>
-                    <Card title="选择告警实例">
-                        <Row gutter={10} >
-                            <Col span={4}>
-                                <Select
-                                    placeholder="服务类型"
-                                    onChange={this.changeService}
-                                >
-                                    {data.map(dt => <Option key={dt.service} >{dt.service}</Option>)}
-                                </Select>
-                            </Col>
-                            <Col span={8}>
-                                <Select
-                                    placeholder="实例"
-                                    onChange={this.changeInstance}
-                                >
-                                    {instanceList.map(instance => <Option key={instance.id} >{instance.name}</Option>)}
-                                </Select>
-                            </Col>
-                        </Row>
-                    </Card>
-                </FormItem>
+                <Card title="选择告警实例">
+                    <FormItem
+                        labelCol={{ span: 2 }}
+                        wrapperCol={{ span: 10 }}
+                        label="实例类型"
+                    >
+                        <Select
+                            placeholder="服务类型"
+                            onChange={this.changeService}
+                        >
+                            {services.map(dt => <Option key={dt.service} >{dt.service}</Option>)}
+                        </Select>
+                    </FormItem>
+                    <FormItem
+                        labelCol={{ span: 2 }}
+                        wrapperCol={{ span: 10 }}
+                        label="实例"
+                    >
+                        <Select
+                            placeholder="实例"
+                            mode="multiple"
+                        >
+                            {instances.map(instance => <Option key={instance.id} >{instance.name}</Option>)}
+                        </Select>
+                    </FormItem>
+                </Card>
+
                 {/* 规则列表 */}
-                <FormItem>
                 <Card title="设置监控规则">
                     {rules.map((rule, index) => {
-                        return <FormItem><Row key={index} gutter={10} >
+                        return <Row gutter={10} key={`rule${index}`}>
                             <Col span={4}>
-                                <Select
-                                    placeholder="监控项"
-                                >
-                                    {items.map(item => <Option key={item} >{item}</Option>)}
-                                </Select>
+                                <FormItem>
+                                    {getFieldDecorator(`item-${index}`, {
+                                        rules: [{
+                                            required: true, message: '不能为空!'
+                                        }]
+                                    })(
+                                        <Select
+                                            placeholder="监控项"
+                                        >
+                                            {items.map(item => <Option key={item} >{item}</Option>)}
+                                        </Select>
+                                    )}
+                                </FormItem>
                             </Col>
                             <Col span={4}>
                                 <Select
                                     placeholder="计算方式"
                                 >
-                                    {computeModes.map(mode => <Option key={mode.value} >{mode.name}</Option>)}
+                                    {env.alarm.rule.computeModes.map(mode => <Option key={mode.value} >{mode.name}</Option>)}
                                 </Select>
                             </Col>
                             <Col span={4}>
@@ -147,39 +127,40 @@ class AlarmSettingForm extends React.Component {
                                 <Select
                                     placeholder="统计周期"
                                 >
-                                    {periods.map(period => <Option key={period} >{period}</Option>)}
+                                    {env.alarm.rule.periods.map(period => <Option key={period.value} >{period.name}</Option>)}
                                 </Select>
                             </Col>
-                        </Row></FormItem>;
+                            <Col span={4}>
+                                <Icon type="close" />
+                            </Col>
+                        </Row>;
                     })}
                     <Button type="primary" onClick={this.addRule}>添加规则</Button>
                 </Card>
-                </FormItem>
-                <FormItem>
+
                 <Card title="告警接收人">
-                        <Row gutter={10} >
-                            <Col span={6}>
-                                <Select
-                                    mode="multiple"
-                                    placeholder="接收人"
-                                >
-                                    {users.map(user => <Option key={user.email} >{user.name}</Option>)}
-                                </Select>
-                            </Col>
-                            <Col span={6}>
-                                <Select
-                                    mode="multiple"
-                                    placeholder="告警类型"
-                                >
-                                    {notifyTypes.map(n => <Option key={n.value} >{n.name}</Option>)}
-                                </Select>
-                            </Col>
-                        </Row>
-                    </Card>
-                    </FormItem>
+                    <Row gutter={10} >
+                        <Col span={6}>
+                            <Select
+                                mode="multiple"
+                                placeholder="接收人"
+                            >
+                                {users.map(user => <Option key={user.email} >{user.name}</Option>)}
+                            </Select>
+                        </Col>
+                        <Col span={6}>
+                            <Select
+                                mode="multiple"
+                                placeholder="告警类型"
+                            >
+                                {env.alarm.rule.notifyTypes.map(n => <Option key={n.value} >{n.name}</Option>)}
+                            </Select>
+                        </Col>
+                    </Row>
+                </Card>
             </Form>
-        </div>;
+        </div >;
     }
 }
 
-export default AlarmSettingForm;
+export default Form.create()(AlarmSettingForm);

@@ -87,14 +87,14 @@ class AlarmSettingList extends React.Component {
                 'field': '',
                 'alias': '操作',
                 render: (text, data) => {
-                    return <div>
+                    return <span>
                         <Button onClick={this.showConfirm}>
                             Confirm
                         </Button>
                         <Button onClick={this.showDeleteConfirm} type="dashed">
                             Delete
                         </Button>
-                    </div>;
+                    </span>;
                 }
             }
         ];
