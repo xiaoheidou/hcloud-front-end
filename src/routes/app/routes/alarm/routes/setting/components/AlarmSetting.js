@@ -4,18 +4,27 @@ import Form from './AlarmSettingForm';
 
 class AlarmSetting extends React.Component {
     state = {
-        isShowForm: false
+        isShowForm: false,
+        currentAlert: {}
     }
 
-    toggleForm = () => {
+    toggleForm = (data) => {
         this.setState((prevState) => ({
-            isShowForm: !prevState.isShowForm
+            isShowForm: !prevState.isShowForm,
+            currentAlert: data || {
+                // service: '',
+                host_id: [],
+                rules: [],
+                contact_groups: [],
+                notify_type: []
+            }
         }));
     }
 
     render() {
         const props = {
             toggleForm: this.toggleForm,
+            currentAlert: this.state.currentAlert,
             ...this.props
         };
 

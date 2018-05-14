@@ -1,6 +1,5 @@
 import React from 'react';
 import DataTables from 'SRC_PATH/components/DataTables';
-import { Link } from 'react-router-dom';
 
 import { Modal, Button } from 'antd';
 const confirm = Modal.confirm;
@@ -19,89 +18,64 @@ class AlarmSettingList extends React.Component {
         });
     }
 
-    showDeleteConfirm = () => {
+    // 删除
+    delete = (id) => {
+        const { deleteById } = this.props;
+
         confirm({
-            title: '你确定要删除这则报警吗?',
+            title: '是否确定删除?',
             content: '',
-            okText: 'Yes',
+            okText: '确定',
             okType: 'danger',
-            cancelText: 'No',
+            cancelText: '取消',
             onOk() {
-                console.log('OK');
-            },
-            onCancel() {
-                console.log('Cancel');
-            },
+                deleteById(id).then(result => {
+                    console.log('删除', result);
+                });
+            }
         });
     }
 
-    showConfirm = () => {
-        confirm({
-            title: 'Do you Want to delete these items?',
-            content: 'Some descriptions',
-            onOk() {
-                console.log('OK');
-            },
-            onCancel() {
-                console.log('Cancel');
-            },
-        });
+    // 编辑
+    edit = (data) => {
+        const { toggleForm } = this.props;
+        toggleForm(data);
     }
 
     render() {
 
         const { toggleForm } = this.props;
+        const { list } = this.state;
 
         const heads = [
-            {
-                'field': 'host_id',
-                'alias': '主机地址',
-                render: (text, data) => {
-                    return <Link to={`/app/alarm/${data.host_key}`}>{text}</Link>;
-                }
-            },
-            {
-                'field': 'port',
-                'alias': '实例端口'
-            },
             {
                 'field': 'service',
                 'alias': '监控服务类型'
             },
             {
-                'field': 'monitor_items',
-                'alias': '监控项'
+                'field': 'host_id',
+                'alias': '监控实例',
+                render: (text, data) => {
+                    return <React.Fragment>
+                        {text.map(t => <div key={t}>{t}</div>)}
+                    </React.Fragment>;
+                }
             },
             {
-                'field': 'statistical_period',
-                'alias': '统计周期'
-            },
-            {
-                'field': 'compute_mode',
-                'alias': '计算方式'
-            },
-            {
-                'field': 'threshold_value',
-                'alias': '阈值',
-            }, {
                 'field': '',
                 'alias': '操作',
                 render: (text, data) => {
-                    return <span>
-                        <Button onClick={this.showConfirm}>
-                            Confirm
-                        </Button>
-                        <Button onClick={this.showDeleteConfirm} type="dashed">
-                            Delete
-                        </Button>
-                    </span>;
+                    return <div className="alarm-list-handle">
+                        <Button onClick={() => { this.edit(data); }} type="primary" size="small">编辑</Button>
+                        <Button onClick={() => { this.delete(data.alert_rules_id); }} type="danger" size="small">删除</Button>
+                    </div>;
                 }
             }
         ];
 
         return <React.Fragment>
-            <Button type="primary" onClick={toggleForm}>添加告警</Button>
-            <DataTables data={this.state.list} heads={heads} />
+            <Button type="primary" onClick={() => { toggleForm(); }}>添加告警模板</Button>
+            <DataTables data={list} heads={heads} />
         </React.Fragment>;
     }
 }

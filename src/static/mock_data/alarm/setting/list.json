@@ -3,174 +3,61 @@
     "message": "undefine",
     "data": [
         {
-            "status": "0",
-            "statistical_period": "5s",
-            "monitor_items": "memory_usage",
-            "update_time": "2018-04-09 14:38:44",
             "service": "node",
-            "alert_rules_id": "a68df93c-3bc0-11e8-a9e5-fa163ea5419d",
-            "contact_groups": "",
-            "compute_mode": ">",
-            "port": "3306",
-            "statistical_approach": "max",
-            "create_time": "2018-04-09 14:38:44",
-            "silence_time": "0",
-            "host_id": "114.67.76.75",
-            "notify_type": "0",
-            "threshold_value": "1"
+            "host_id": [
+                "127.0.0.1",
+                "127.0.0.3"
+            ],
+            "rules": [
+                {
+                    "monitor_items": "memory_usage",
+                    "statistical_period": "5m",
+                    "compute_mode": ">",
+                    "threshold_value": 80
+                },
+                {
+                    "monitor_items": "memory_usage",
+                    "statistical_period": "5m",
+                    "compute_mode": ">",
+                    "threshold_value": 80
+                }
+            ],
+            "contact_groups": [
+                "group1",
+                "group2"
+            ],
+            "notify_type": [
+                0,
+                1
+            ]
         },
         {
-            "status": "2",
-            "statistical_period": "5s",
-            "monitor_items": "memory_usage",
-            "update_time": "2018-05-03 16:02:19",
             "service": "node",
-            "alert_rules_id": "4d20fc14-4ea8-11e8-9f52-fa163ea5419d",
-            "contact_groups": "machao",
-            "compute_mode": ">",
-            "port": "9100",
-            "statistical_approach": "max",
-            "create_time": "2018-05-03 16:02:19",
-            "silence_time": "0",
-            "host_id": "114.67.76.75",
-            "notify_type": "0",
-            "threshold_value": "1"
-        },
-        {
-            "status": "2",
-            "statistical_period": "5s",
-            "monitor_items": "memory_usage",
-            "update_time": "2018-05-03 16:04:29",
-            "service": "node",
-            "alert_rules_id": "9a1b4d1c-4ea8-11e8-9d4a-fa163ea5419d",
-            "contact_groups": "machao",
-            "compute_mode": ">",
-            "port": "9100",
-            "statistical_approach": "max",
-            "create_time": "2018-05-03 16:04:28",
-            "silence_time": "0",
-            "host_id": "114.67.76.75",
-            "notify_type": "0",
-            "threshold_value": "1"
-        },
-        {
-            "status": "2",
-            "statistical_period": "5s",
-            "monitor_items": "memory_usage",
-            "update_time": "2018-05-03 16:08:51",
-            "service": "node",
-            "alert_rules_id": "2dbffcde-4ea9-11e8-80be-fa163ea5419d",
-            "contact_groups": "machao",
-            "compute_mode": ">",
-            "port": "9100",
-            "statistical_approach": "max",
-            "create_time": "2018-05-03 16:08:35",
-            "silence_time": "0",
-            "host_id": "114.67.76.75",
-            "notify_type": "0",
-            "threshold_value": "1"
-        },
-        {
-            "status": "2",
-            "statistical_period": "5s",
-            "monitor_items": "memory_usage",
-            "update_time": "2018-05-03 16:26:15",
-            "service": "node",
-            "alert_rules_id": "9af6382a-4eab-11e8-9b3a-fa163ea5419d",
-            "contact_groups": "machao",
-            "compute_mode": ">",
-            "port": "9100",
-            "statistical_approach": "max",
-            "create_time": "2018-05-03 16:25:58",
-            "silence_time": "0",
-            "host_id": "114.67.76.75",
-            "notify_type": "0",
-            "threshold_value": "1"
-        },
-        {
-            "status": "2",
-            "statistical_period": "5s",
-            "monitor_items": "memory_usage",
-            "update_time": "2018-05-03 18:20:42",
-            "service": "node",
-            "alert_rules_id": "a1d19936-4ebb-11e8-ae5f-fa163ea5419d",
-            "contact_groups": "machao",
-            "compute_mode": ">",
-            "port": "9100",
-            "statistical_approach": "max",
-            "create_time": "2018-05-03 18:20:41",
-            "silence_time": "0",
-            "host_id": "114.67.76.75",
-            "notify_type": "0",
-            "threshold_value": "1"
-        },
-        {
-            "status": "2",
-            "statistical_period": "5s",
-            "monitor_items": "memory_usage",
-            "update_time": "2018-05-03 18:22:53",
-            "service": "node",
-            "alert_rules_id": "efb0a3ea-4ebb-11e8-9773-fa163ea5419d",
-            "contact_groups": "machao",
-            "compute_mode": ">",
-            "port": "9100",
-            "statistical_approach": "max",
-            "create_time": "2018-05-03 18:22:52",
-            "silence_time": "0",
-            "host_id": "114.67.76.75",
-            "notify_type": "0",
-            "threshold_value": "1"
-        },
-        {
-            "status": "2",
-            "statistical_period": "5s",
-            "monitor_items": "memory_usage",
-            "update_time": "2018-05-03 18:27:53",
-            "service": "node",
-            "alert_rules_id": "a2a1b8e0-4ebc-11e8-94d5-fa163ea5419d",
-            "contact_groups": "machao",
-            "compute_mode": ">",
-            "port": "9100",
-            "statistical_approach": "max",
-            "create_time": "2018-05-03 18:27:52",
-            "silence_time": "0",
-            "host_id": "114.67.76.75",
-            "notify_type": "0",
-            "threshold_value": "1"
-        },
-        {
-            "status": "1",
-            "statistical_period": "5s",
-            "monitor_items": "memory_usage",
-            "update_time": "2018-05-04 09:53:48",
-            "service": "node",
-            "alert_rules_id": "f1a8a986-4f3d-11e8-81e4-fa163ea5419d",
-            "contact_groups": "machao",
-            "compute_mode": ">",
-            "port": "9100",
-            "statistical_approach": "max",
-            "create_time": "2018-05-04 09:53:30",
-            "silence_time": "0",
-            "host_id": "114.67.76.75",
-            "notify_type": "0",
-            "threshold_value": "1"
-        },
-        {
-            "status": "1",
-            "statistical_period": "5m",
-            "monitor_items": "memory_usage",
-            "update_time": "2018-05-04 18:00:33",
-            "service": "node",
-            "alert_rules_id": "dea9afb4-4f43-11e8-8430-fa163ea5419d",
-            "contact_groups": "machao",
-            "compute_mode": ">",
-            "port": "9100",
-            "statistical_approach": "max",
-            "create_time": "2018-05-04 10:35:55",
-            "silence_time": "0",
-            "host_id": "192.168.0.92",
-            "notify_type": "1",
-            "threshold_value": "1"
+            "host_id": [
+                "127.0.0.1"
+            ],
+            "rules": [
+                {
+                    "monitor_items": "memory_usage",
+                    "statistical_period": "5m",
+                    "compute_mode": ">",
+                    "threshold_value": 80
+                },
+                {
+                    "monitor_items": "memory_usage",
+                    "statistical_period": "5m",
+                    "compute_mode": ">",
+                    "threshold_value": 80
+                }
+            ],
+            "contact_groups": [
+                "group1",
+                "group2"
+            ],
+            "notify_type": [
+                0,
+                1
+            ]
         }
     ]
 }

@@ -31,3 +31,13 @@ export function getUserList() {
         return result;
     };
 }
+
+/**
+ * 删除告警模板
+ */
+export function deleteById(id) {
+    return async dispatch => {
+        const result = await fetch(`${API.ALARM.SETTING.DELETE}/${id}`);
+        return result;
+    };
+}

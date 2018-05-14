@@ -6,7 +6,8 @@ import AlarmSetting from '../components/AlarmSetting';
 import {
     getList,
     getInstanceList,
-    getUserList
+    getUserList,
+    deleteById
 } from '../logic/actions';
 
 class AlarmSettingContainer extends React.Component {
@@ -24,7 +25,8 @@ function mapDispatchToProps(dispatch, ownProps) {
         dispatch: dispatch,
         getList: () => dispatch(getList()),
         getInstanceList: () => dispatch(getInstanceList()),
-        getUserList: () => dispatch(getUserList())
+        getUserList: () => dispatch(getUserList()),
+        deleteById: (...args) => dispatch(deleteById(...args))
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AlarmSettingContainer);

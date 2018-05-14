@@ -6,19 +6,40 @@ const FormItem = Form.Item;
 class AlarmSettingForm extends React.Component {
     state = {
         services: [],
-        instances: [],
         users: [],
-        rules: [],
-        items: []
+        data: {
+            // service: '',
+            host_id: [],
+            rules: [],
+            contact_groups: [],
+            notify_type: []
+        },
+        rules: []
+    }
+
+    componentWillMount() {
+        if (this.props.currentAlert) {
+            this.setState({
+                data: this.props.currentAlert
+            });
+        }
     }
 
     // 切换服务类型
     changeService = (v) => {
-        const currentService = this.state.services.filter(dt => dt.service === v)[0];
-        this.setState({
-            instances: currentService.instances,
-            items: currentService.items
+        this.setState(prevState => {
+            prevState.data.service = v;
+            return prevState;
         });
+    }
+
+    // 获取指定类型下实例列表和告警项列表
+    getInstancesAndItems = (service) => {
+        const currentService = this.state.services.filter(dt => dt.service === service)[0] || {};
+        return {
+            instances: currentService.instances || [],
+            items: currentService.items || []
+        };
     }
 
     // 添加规则
@@ -34,6 +55,7 @@ class AlarmSettingForm extends React.Component {
         });
     }
 
+    // 保存
     save = () => {
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
@@ -56,8 +78,14 @@ class AlarmSettingForm extends React.Component {
 
     render() {
         const { toggleForm } = this.props;
-        const { instances, rules, users, items, services } = this.state;
+        const { rules, users, services, data } = this.state;
         const { getFieldDecorator } = this.props.form;
+
+        const CurrentInstancesAndItems = data.service ? this.getInstancesAndItems(data.service) : {
+            instances: [],
+            items: []
+        };
+        const { instances, items } = CurrentInstancesAndItems;
 
         return <div className="alarm-setting-form">
             <div className="alarm-setting-back">
@@ -76,6 +104,7 @@ class AlarmSettingForm extends React.Component {
                         <Select
                             placeholder="服务类型"
                             onChange={this.changeService}
+                            defaultValue={data.service}
                         >
                             {services.map(dt => <Option key={dt.service} >{dt.service}</Option>)}
                         </Select>
