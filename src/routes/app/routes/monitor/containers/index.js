@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getList } from '../logic/actions';
-import { getTitle } from '../logic/actions';
+import { getList, getIndexData } from '../logic/actions';
 import Monitor from '../components/Monitor';
 
 class MonitorContainer extends React.Component {
@@ -19,7 +18,7 @@ function mapDispatchToProps(dispatch, ownProps) {
     return {
         dispatch: dispatch,
         getList: () => dispatch(getList()),
-        getTitle: () => dispatch(getTitle())
+        getIndexData: () => dispatch(getIndexData())
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MonitorContainer);

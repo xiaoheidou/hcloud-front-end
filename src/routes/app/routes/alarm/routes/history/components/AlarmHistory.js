@@ -1,10 +1,10 @@
 import React from 'react';
 import DataTables from 'SRC_PATH/components/DataTables';
 
-import { Modal, Button } from 'antd';
+import { Button } from 'antd';
 
 
-class AlarmHistoryList extends React.Component {
+class AlarmHistory extends React.Component {
     state = {
         list: []
     }
@@ -49,10 +49,10 @@ class AlarmHistoryList extends React.Component {
             }
         ];
 
-        return <React.Fragment>
+        return <div className="alarm-history">
             <DataTables data={list} heads={heads} />
-        </React.Fragment>;
+        </div>;
     }
 }
 
-export default AlarmHistoryList;
+export default AlarmHistory;

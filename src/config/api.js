@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:23:37 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-05-14 23:18:45
+ * @Last Modified time: 2018-05-16 21:11:21
  */
 const API = env.domain + '/api/v1';
 export default {
@@ -12,8 +12,8 @@ export default {
     },
     // 监控
     MONITOR: {
-        LIST: './mock_data/line.json',
-        TITLE:'./mock_data/title.json'
+        INDEX_DATA: './mock_data/monitor/line.json',
+        LIST: './mock_data/monitor/list.json'
     },
     // 告警
     ALARM: {
@@ -25,7 +25,6 @@ export default {
         },
         HISTORY: {
             LIST: './mock_data/alarm/history/list.json',
-            
         }
     },
     // 用户

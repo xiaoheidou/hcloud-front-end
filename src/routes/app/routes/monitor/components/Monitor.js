@@ -27,7 +27,7 @@ const ranges = [{
 class Monitor extends React.Component {
     state = {
         currentTime: ranges[0],
-        data: { axis: [], data: [] },
+        data: [],
     }
 
     async componentDidMount() {
@@ -35,11 +35,6 @@ class Monitor extends React.Component {
         const data = await getList();
         this.setState({
             data: data
-        });
-        const { getTitle } = this.props;
-        const title = await getTitle();
-        this.setState({
-            title: title
         });
     }
 
@@ -58,22 +53,32 @@ class Monitor extends React.Component {
     }
 
     render() {
-    
+        const { getIndexData } = this.props;
+        const { currentTime, data } = this.state;
+
         return <div className="monitor">
             <h4 className="monitor-title">标题显示</h4>
             <div className="monitor-head">
                 {ranges.map(range => <a
                     key={range.text}
-                    className={`monitor-time ${this.state.currentTime.text === range.text ? 'monitor-active' : ''}`}
+                    className={`monitor-time ${currentTime.text === range.text ? 'monitor-active' : ''}`}
                     href="#"
                     onClick={(e) => { this.changeRange(e, range); }}
                 >{range.text}</a>)}
 
-                <RangeDatePicker value={this.state.currentTime.times} onChange={this.changeDate} />
+                <RangeDatePicker value={currentTime.times} onChange={this.changeDate} />
             </div>
 
-            <LineChart data={this.state.data} title={this.state.title} />
-            
+            <List
+                grid={{ gutter: 24, column: 2 }}
+                dataSource={data}
+                renderItem={item => (
+                    <List.Item>
+                        <LineChart title={item} getIndexData={getIndexData} />
+                    </List.Item>
+                )}
+            />
+
         </div>;
     }
 }

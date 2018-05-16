@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import AlarmHistory from '../components/HistoryList';
+import AlarmHistory from '../components/AlarmHistory';
 
 import {
     getList
