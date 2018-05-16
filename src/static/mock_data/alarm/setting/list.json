@@ -14,7 +14,7 @@
                 {
                     "monitor_items": "memory_usage",
                     "statistical_period": "5m",
-                    "compute_mode": ">",
+                    "compute_mode": "==",
                     "threshold_value": 80
                 },
                 {
@@ -25,8 +25,8 @@
                 }
             ],
             "contact_groups": [
-                "group1",
-                "group2"
+                "zhang@163.com",
+                "ma@163.com"
             ],
             "notify_type": [
                 0,
@@ -55,8 +55,8 @@
                 }
             ],
             "contact_groups": [
-                "group1",
-                "group2"
+                "zhang@163.com",
+                "ma@163.com"
             ],
             "notify_type": [
                 0,
