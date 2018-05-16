@@ -1,3 +1,8 @@
-import AlarmHistory from './components/AlarmHistory';
+import Container from './containers';
+import reducer from './logic/reducers';
+import { injectReducer } from 'rootReducer';
+import './assets/style.less';
 
-export default AlarmHistory;
+injectReducer({ key: 'alarmHistory', reducer: reducer });
+
+export default Container;

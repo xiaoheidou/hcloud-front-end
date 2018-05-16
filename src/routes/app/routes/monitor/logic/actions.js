@@ -8,3 +8,9 @@ export function getList() {
         return result;
     };
 }
+export function getTitle() {
+    return async dispatch => {
+        const result = await fetch(API.MONITOR.TITLE);
+        return result;
+    };
+}

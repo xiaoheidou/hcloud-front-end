@@ -12,7 +12,8 @@ export default {
     },
     // 监控
     MONITOR: {
-        LIST: './mock_data/line.json'
+        LIST: './mock_data/line.json',
+        TITLE:'./mock_data/title.json'
     },
     // 告警
     ALARM: {
@@ -21,6 +22,10 @@ export default {
             // LIST: API + '/alert_rules_list',
             DELETE: API + '/alert_rules',
             INSTANCE_LIST: './mock_data/alarm/setting/instanceList.json'
+        },
+        HISTORY: {
+            LIST: './mock_data/alarm/history/list.json',
+            
         }
     },
     // 用户

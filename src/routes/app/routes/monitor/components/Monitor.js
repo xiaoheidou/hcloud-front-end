@@ -27,7 +27,7 @@ const ranges = [{
 class Monitor extends React.Component {
     state = {
         currentTime: ranges[0],
-        data: { axis: [], data: [] }
+        data: { axis: [], data: [] },
     }
 
     async componentDidMount() {
@@ -35,6 +35,11 @@ class Monitor extends React.Component {
         const data = await getList();
         this.setState({
             data: data
+        });
+        const { getTitle } = this.props;
+        const title = await getTitle();
+        this.setState({
+            title: title
         });
     }
 
@@ -53,9 +58,7 @@ class Monitor extends React.Component {
     }
 
     render() {
-        // const { match } = this.props;
-        const data = [1, 2, 3, 4];
-
+    
         return <div className="monitor">
             <h4 className="monitor-title">标题显示</h4>
             <div className="monitor-head">
@@ -69,16 +72,8 @@ class Monitor extends React.Component {
                 <RangeDatePicker value={this.state.currentTime.times} onChange={this.changeDate} />
             </div>
 
-            {/* hostKey: {match.params.hostKey} */}
-            <List
-                grid={{ gutter: 24, column: 2 }}
-                dataSource={data}
-                renderItem={item => (
-                    <List.Item>
-                        <LineChart data={this.state.data} />
-                    </List.Item>
-                )}
-            />
+            <LineChart data={this.state.data} title={this.state.title} />
+            
         </div>;
     }
 }

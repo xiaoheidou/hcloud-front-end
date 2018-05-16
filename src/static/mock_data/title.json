@@ -1,0 +1,61 @@
+{
+    "message": "undefine",
+    "status": "success",
+    "data": [{
+            "aggregation": "avg",
+            "category": "node",
+            "interval": "30s",
+            "name": "cpu_used",
+            "nick_name": "CPU\u4f7f\u7528\u7387",
+            "status": "success"
+        },
+        {
+            "aggregation": "last",
+            "category": "node",
+            "interval": "30s",
+            "name": "memory_used_rate",
+            "nick_name": "\u5185\u5b58\u4f7f\u7528\u7387",
+            "status": "success"
+        },
+        {
+            "aggregation": "last",
+            "category": "node",
+            "interval": "30s",
+            "name": "network_io",
+            "nick_name": "\u7f51\u5361\u63a5\u6536/\u53d1\u9001\u901f\u7387-eth0",
+            "status": "success"
+        },
+        {
+            "aggregation": "last",
+            "category": "node",
+            "interval": "30s",
+            "name": "disk_io",
+            "nick_name": "\u786c\u76d8\u8bfb/\u5199\u541e\u5410\u91cf-vda",
+            "status": "success"
+        },
+        {
+            "aggregation": "last",
+            "category": "node",
+            "interval": "30s",
+            "name": "disk_io",
+            "nick_name": "\u786c\u76d8\u8bfb/\u5199\u541e\u5410\u91cf-vdb",
+            "status": "success"
+        },
+        {
+            "aggregation": "last",
+            "category": "node",
+            "interval": "30s",
+            "name": "disk_space",
+            "nick_name": "\u786c\u76d8\u4f7f\u7528\u7387-/dev/vda1",
+            "status": "success"
+        }, {
+            "aggregation": "last",
+            "category": "node",
+            "interval": "30s",
+            "name": "disk_space",
+            "nick_name": "\u786c\u76d8\u4f7f\u7528\u7387-/dev/vdb",
+            "status": "success"
+        }
+    ]
+
+}
