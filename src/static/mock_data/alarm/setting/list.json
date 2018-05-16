@@ -3,6 +3,8 @@
     "message": "undefine",
     "data": [
         {
+            "alert_rules_id": "a68df93c-3bc0-11e8-a9e5-fa163ea5419d",
+            "status": "0",
             "service": "node",
             "host_id": [
                 "127.0.0.1",
@@ -32,6 +34,8 @@
             ]
         },
         {
+            "alert_rules_id": "4d20fc14-4ea8-11e8-9f52-fa163ea5419c",
+            "status": "1",
             "service": "node",
             "host_id": [
                 "127.0.0.1"

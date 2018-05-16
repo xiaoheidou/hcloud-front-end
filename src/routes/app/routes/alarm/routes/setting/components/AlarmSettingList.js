@@ -42,6 +42,14 @@ class AlarmSettingList extends React.Component {
         toggleForm(data);
     }
 
+    // 更新状态
+    updateStatus = (id, status) => {
+        const { updateStatus } = this.props;
+        updateStatus(id, status).then(result => {
+            console.log('更新成功', result);
+        });
+    }
+
     render() {
 
         const { toggleForm } = this.props;
@@ -66,7 +74,12 @@ class AlarmSettingList extends React.Component {
                 'alias': '操作',
                 render: (text, data) => {
                     return <div className="alarm-list-handle">
-                        <Button onClick={() => { this.edit(data); }} type="primary" size="small">编辑</Button>
+                        <Button onClick={() => { this.edit(data); }} size="small">编辑</Button>
+                        {
+                            data.status == 0
+                                ? <Button onClick={() => { this.updateStatus(data.alert_rules_id, 'enable'); }} size="small">启用</Button>
+                                : <Button onClick={() => { this.updateStatus(data.alert_rules_id, 'disable'); }} size="small">禁用</Button>
+                        }
                         <Button onClick={() => { this.delete(data.alert_rules_id); }} type="danger" size="small">删除</Button>
                     </div>;
                 }

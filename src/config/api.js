@@ -1,9 +1,3 @@
-/*
- * @Author: harry.lang 
- * @Date: 2018-04-17 23:23:37 
- * @Last Modified by: harry.lang
- * @Last Modified time: 2018-05-16 21:11:21
- */
 const API = env.domain + '/api/v1';
 export default {
     // 资源
@@ -21,7 +15,8 @@ export default {
             LIST: './mock_data/alarm/setting/list.json',
             // LIST: API + '/alert_rules_list',
             DELETE: API + '/alert_rules',
-            INSTANCE_LIST: './mock_data/alarm/setting/instanceList.json'
+            INSTANCE_LIST: './mock_data/alarm/setting/instanceList.json',
+            UPDATE_STATUS: API + '/alert_rules'
         },
         HISTORY: {
             LIST: './mock_data/alarm/history/list.json',

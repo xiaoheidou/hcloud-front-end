@@ -7,7 +7,8 @@ import {
     getList,
     getInstanceList,
     getUserList,
-    deleteById
+    deleteById,
+    updateStatus
 } from '../logic/actions';
 
 class AlarmSettingContainer extends React.Component {
@@ -26,7 +27,8 @@ function mapDispatchToProps(dispatch, ownProps) {
         getList: () => dispatch(getList()),
         getInstanceList: () => dispatch(getInstanceList()),
         getUserList: () => dispatch(getUserList()),
-        deleteById: (...args) => dispatch(deleteById(...args))
+        deleteById: (...args) => dispatch(deleteById(...args)),
+        updateStatus: (...args) => dispatch(updateStatus(...args)),
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AlarmSettingContainer);

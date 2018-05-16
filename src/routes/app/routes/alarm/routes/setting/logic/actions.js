@@ -37,7 +37,23 @@ export function getUserList() {
  */
 export function deleteById(id) {
     return async dispatch => {
-        const result = await fetch(`${API.ALARM.SETTING.DELETE}/${id}`);
+        const result = await fetch(`${API.ALARM.SETTING.DELETE}/${id}`, {
+            method: 'DELETE'
+        });
         return result;
     };
 }
+
+/**
+ * 修改告警规则状态（启用-enable/禁用-disable）
+ */
+export function updateStatus(id, status) {
+    return async dispatch => {
+        const result = await fetch(`${API.ALARM.SETTING.UPDATE_STATUS}/${id}`, {
+            method: 'PUT',
+            body: { action: { method: status } }
+        });
+        return result;
+    };
+}
+
