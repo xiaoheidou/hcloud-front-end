@@ -136,10 +136,11 @@
         .paginate_button {
             display: inline-block;
             padding: 3px 10px;
-            border-top: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
-            border-right: 1px solid #ccc;
+            border-top: 1px solid #f1f1f1;
+            border-bottom: 1px solid #f1f1f1;
+            border-right: 1px solid #f1f1f1;
             color: rgba(0, 0, 0, .65);
+            // border-radius: 25px;
             &:first-child {
                 border-left: 1px solid #ccc;
             }
@@ -155,6 +156,16 @@
             border: 1px solid #ccc;
             margin-right: 10px;
             border-radius: 2px;
+            border-radius: 25px;
+            &.disabled{
+                background: #f1f1f1;
+                color: gray;
+                cursor: auto;
+                &:hover{
+                    color:gray;
+                }
+            }
+            
         }
         .next {
             margin-left: 10px;
