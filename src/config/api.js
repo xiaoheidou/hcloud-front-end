@@ -2,7 +2,7 @@ const API = env.domain + '/api/v1';
 export default {
     // 资源
     RESOURCE: {
-        LIST: API + '/hostlist'
+        LIST: API + '/${category}/list'
     },
     // 监控
     MONITOR: {

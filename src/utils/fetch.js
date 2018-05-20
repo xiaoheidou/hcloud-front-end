@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:25:26 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-05-13 22:53:40
+ * @Last Modified time: 2018-05-20 11:37:36
  * fetch参考：https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
  */
 import 'whatwg-fetch';
@@ -13,7 +13,7 @@ export default function _fetch(url, options) {
         mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Hcloud secret-token-1'
+            // 'Authorization': 'Hcloud secret-token-1'
         },
         ...options
     };

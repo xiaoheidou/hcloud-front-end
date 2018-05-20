@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 class Resource extends React.Component {
     componentDidMount() {
         const { getList } = this.props;
-        getList();
+        const { category } = this.props.match.params;
+        getList(category);
     }
 
     render() {
@@ -17,7 +18,7 @@ class Resource extends React.Component {
                 'field': 'name',
                 'alias': '名称',
                 render: (text, data) => {
-                    return <Link to={`/app/monitor/${data.host_key}`}>{text}</Link>;
+                    return <Link to={`/app/monitor/${data.key}`}>{text}</Link>;
                 }
             },
             {

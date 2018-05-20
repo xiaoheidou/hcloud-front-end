@@ -7,7 +7,7 @@ class AppRouter extends React.Component {
         const { match } = this.props;
 
         return <Switch>
-            <Route path={`${match.url}/resource/:type`} component={
+            <Route path={`${match.url}/resource/:category`} component={
                 Loadable({
                     loader: () => import(/* webpackChunkName: "resource" */'../routes/resource'),
                     loading: () => null

@@ -17,7 +17,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
     return {
         dispatch: dispatch,
-        getList: () => dispatch(getList())
+        getList: (...args) => dispatch(getList(...args))
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ResourceContainer);
