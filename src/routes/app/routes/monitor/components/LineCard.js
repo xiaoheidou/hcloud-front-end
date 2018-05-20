@@ -16,12 +16,31 @@ class LineCard extends React.Component {
         }));
     }
 
-    async componentDidMount() {
-        const { getIndexData } = this.props;
-        const data = await getIndexData();
-        this.setState({
-            data: data
-        });
+    timeout = null
+
+    componentDidMount() {
+        const { getIndexData, title, times } = this.props;
+        const interval = parseInt(title.interval);
+
+        const get = () => {
+            getIndexData({
+                start_time: times[0].valueOf(),
+                end_time: times[1].valueOf(),
+                metric: title.name
+            }).then((data) => {
+                this.setState({
+                    data: data
+                });
+                this.timeout = setTimeout(() => {
+                    get();
+                }, interval * 1000);
+            });
+        };
+        get();
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timeout);
     }
 
     render() {

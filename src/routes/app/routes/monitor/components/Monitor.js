@@ -32,7 +32,9 @@ class Monitor extends React.Component {
 
     async componentDidMount() {
         const { getList } = this.props;
-        const data = await getList();
+        const { category, key } = this.props.match.params;
+
+        const data = await getList(category, key);
         this.setState({
             data: data
         });
@@ -44,7 +46,6 @@ class Monitor extends React.Component {
                 times: times
             }
         });
-        console.log(new Date(times[0]).toLocaleString(), new Date(times[1]).toLocaleString());
     }
 
     changeRange = (e, range) => {
@@ -74,7 +75,7 @@ class Monitor extends React.Component {
                 dataSource={data}
                 renderItem={item => (
                     <List.Item>
-                        <LineChart title={item} getIndexData={getIndexData} />
+                        <LineChart title={item} getIndexData={getIndexData} times={currentTime.times} />
                     </List.Item>
                 )}
             />

@@ -7,7 +7,6 @@ import API from 'SRC_PATH/config/api';
  */
 export function getList(category) {
     return async dispatch => {
-        console.log(API.RESOURCE.LIST.replace('${category}', category));
         const result = await fetch(API.RESOURCE.LIST.replace('${category}', category));
         dispatch(setList(result));
     };

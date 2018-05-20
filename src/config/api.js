@@ -7,13 +7,14 @@ export default {
     // 监控
     MONITOR: {
         INDEX_DATA: './mock_data/monitor/line.json',
-        LIST: './mock_data/monitor/list.json'
+        LIST: API + '/monitor/data/${category}/${key}'
+        // LIST: './mock_data/monitor/list.json'
     },
     // 告警
     ALARM: {
         SETTING: {
-            LIST: './mock_data/alarm/setting/list.json',
-            // LIST: API + '/alert_rules_list',
+            // LIST: './mock_data/alarm/setting/list.json',
+            LIST: API + '/alert_rules_list',
             DELETE: API + '/alert_rules',
             INSTANCE_LIST: './mock_data/alarm/setting/instanceList.json',
             UPDATE_STATUS: API + '/alert_rules'

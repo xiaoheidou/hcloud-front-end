@@ -19,7 +19,7 @@ class AppRouter extends React.Component {
                     loading: () => null
                 })
             } />
-            <Route path={`${match.url}/monitor/:hostKey`} component={
+            <Route path={`${match.url}/monitor/:category/:key`} component={
                 Loadable({
                     loader: () => import(/* webpackChunkName: "monitor" */'../routes/monitor'),
                     loading: () => null

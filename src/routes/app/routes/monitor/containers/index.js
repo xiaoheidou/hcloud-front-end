@@ -17,8 +17,8 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
     return {
         dispatch: dispatch,
-        getList: () => dispatch(getList()),
-        getIndexData: () => dispatch(getIndexData())
+        getList: (...args) => dispatch(getList(...args)),
+        getIndexData: (...args) => dispatch(getIndexData(...args))
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MonitorContainer);

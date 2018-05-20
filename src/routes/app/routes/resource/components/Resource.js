@@ -12,13 +12,14 @@ class Resource extends React.Component {
     render() {
         const { resource } = this.props;
         const { list } = resource;
+        const { category } = this.props.match.params;
 
         const heads = [
             {
                 'field': 'name',
                 'alias': '名称',
                 render: (text, data) => {
-                    return <Link to={`/app/monitor/${data.key}`}>{text}</Link>;
+                    return <Link to={`/app/monitor/${category}/${data.key}`}>{text}</Link>;
                 }
             },
             {

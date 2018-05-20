@@ -5,9 +5,10 @@ import API from 'SRC_PATH/config/api';
 /**
  * 获取数据列表
  */
-export function getList() {
+export function getList(category, key) {
     return async dispatch => {
-        const result = await fetch(API.MONITOR.LIST);
+        const url = API.MONITOR.LIST.replace('${category}', category).replace('${key}', key);
+        const result = await fetch(url);
         return result;
     };
 }
@@ -15,9 +16,11 @@ export function getList() {
 /**
  * 获取指标数据
  */
-export function getIndexData() {
+export function getIndexData(params) {
     return async dispatch => {
-        const result = await fetch(API.MONITOR.INDEX_DATA);
+        const result = await fetch(API.MONITOR.INDEX_DATA, {
+            params: params
+        });
         return result;
     };
 }
