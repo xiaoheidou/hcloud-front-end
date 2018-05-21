@@ -13,11 +13,12 @@ export default {
     // 告警
     ALARM: {
         SETTING: {
-            // LIST: './mock_data/alarm/setting/list.json',
-            LIST: API + '/alert_rules_list',
+            LIST: './mock_data/alarm/setting/list.json',
+            // LIST: API + '/alert_rules_list',
             DELETE: API + '/alert_rules',
             INSTANCE_LIST: './mock_data/alarm/setting/instanceList.json',
-            UPDATE_STATUS: API + '/alert_rules'
+            UPDATE_STATUS: API + '/alert_rules',
+            GET_DEDAULT_RULES: API + '/alert_rules_list/service/${service}'
         },
         HISTORY: {
             LIST: './mock_data/alarm/history/list.json',

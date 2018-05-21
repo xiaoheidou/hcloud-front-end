@@ -25,33 +25,10 @@ class AlarmSettingForm extends React.Component {
     }
 
     // 切换服务类型
-    changeService = (v) => {
-        this.setState(prevState => {
-            prevState.data.service = v;
-            return prevState;
-        });
-    }
-
-    // 获取指定类型下实例列表和告警项列表
-    getInstancesAndItems = (service) => {
-        const currentService = this.state.services.filter(dt => dt.service === service)[0] || {};
-        return {
-            instances: currentService.instances || [],
-            items: currentService.items || []
-        };
-    }
-
-    // 添加规则
-    addRule = () => {
-        this.setState(prevState => {
-            prevState.data.rules.push({
-                // monitor_items: '',
-                compute_mode: '==',
-                // threshold_value: '',
-                // statistical_period: ''
-            });
-            return prevState;
-        });
+    changeService = async (v) => {
+        const { getDefaultRule } = this.props;
+        const rules = await getDefaultRule(v);
+        console.log(rules);
     }
 
     // 保存
@@ -63,6 +40,12 @@ class AlarmSettingForm extends React.Component {
                 console.log(err);
             }
         });
+    }
+
+    // 获取指定类型下实例列表和告警项列表
+    getInstances = (service) => {
+        const currentService = this.state.services.filter(dt => dt.service === service)[0] || {};
+        return currentService.instances || [];
     }
 
     async componentDidMount() {
@@ -80,11 +63,7 @@ class AlarmSettingForm extends React.Component {
         const { users, services, data } = this.state;
         const { getFieldDecorator } = this.props.form;
 
-        const CurrentInstancesAndItems = data.service ? this.getInstancesAndItems(data.service) : {
-            instances: [],
-            items: []
-        };
-        const { instances, items } = CurrentInstancesAndItems;
+        const instances = this.getInstances(data.service);
 
         return <div className="alarm-setting-form">
             <div className="alarm-setting-back">
@@ -94,7 +73,21 @@ class AlarmSettingForm extends React.Component {
                 <Button type="primary" onClick={this.save}>保存</Button>
             </div>
             <Form>
-                <Card title="选择告警实例">
+                <Card title="告警模板">
+                    <FormItem
+                        labelCol={{ span: 2 }}
+                        wrapperCol={{ span: 10 }}
+                        label="名称"
+                    >
+                        {getFieldDecorator('name', {
+                            rules: [{
+                                required: true, message: '不能为空!'
+                            }],
+                            initialValue: data.name
+                        })(
+                            <Input />
+                        )}
+                    </FormItem>
                     <FormItem
                         labelCol={{ span: 2 }}
                         wrapperCol={{ span: 10 }}
@@ -138,25 +131,22 @@ class AlarmSettingForm extends React.Component {
                 {/* 规则列表 */}
                 <Card title="设置监控规则">
                     {data.rules.map((rule, index) => {
-                        return <Row gutter={10} key={`rule${index}`}>
+                        return <Row gutter={10} key={`rule${index}`} className="rules-item">
                             <Col span={4}>
-                                <FormItem>
-                                    {getFieldDecorator(`item-${index}`, {
-                                        rules: [{
-                                            required: true, message: '不能为空!'
-                                        }],
-                                        initialValue: rule.monitor_items
-                                    })(
-                                        <Select
-                                            placeholder="监控项"
-                                        >
-                                            {items.map(item => <Option key={item}>{item}</Option>)}
-                                        </Select>
-                                    )}
-                                </FormItem>
+                                {getFieldDecorator(`item-${index}`, {
+                                    rules: [{
+                                        required: true, message: '不能为空!'
+                                    }],
+                                    initialValue: rule.monitor_items
+                                })(
+                                    <Input disabled />
+                                )}
                             </Col>
                             <Col span={4}>
                                 {getFieldDecorator(`compute-${index}`, {
+                                    rules: [{
+                                        required: true, message: '不能为空!'
+                                    }],
                                     initialValue: rule.compute_mode
                                 })(
                                     <Select
@@ -168,35 +158,30 @@ class AlarmSettingForm extends React.Component {
                             </Col>
                             <Col span={4}>
                                 {getFieldDecorator(`threshold-${index}`, {
+                                    rules: [{
+                                        required: true, message: '不能为空!'
+                                    }],
                                     initialValue: rule.threshold_value
                                 })(
                                     <Input placeholder="阈值" />
                                 )}
                             </Col>
                             <Col span={4}>
-                                {getFieldDecorator(`period-${index}`, {
-                                    initialValue: rule.statistical_period
-                                })(
-                                    <Select
-                                        placeholder="统计周期"
-                                    >
-                                        {env.alarm.rule.periods.map(period => <Option key={period.value} >{period.name}</Option>)}
-                                    </Select>
-                                )}
-
-                            </Col>
-                            <Col span={4}>
-                                <Icon type="close" />
+                                <a href="javascript:void(0);">
+                                    {rule.silence ? <Icon type="play-circle-o" /> : <Icon type="pause-circle-o" />}
+                                </a>
                             </Col>
                         </Row>;
                     })}
-                    <Button type="primary" onClick={this.addRule}>添加规则</Button>
                 </Card>
 
                 <Card title="告警接收人">
                     <Row gutter={10} >
                         <Col span={6}>
                             {getFieldDecorator('contactGroups', {
+                                rules: [{
+                                    required: true, message: '不能为空!'
+                                }],
                                 initialValue: data.contact_groups
                             })(
                                 <Select
@@ -209,6 +194,9 @@ class AlarmSettingForm extends React.Component {
                         </Col>
                         <Col span={6}>
                             {getFieldDecorator('notifyType', {
+                                rules: [{
+                                    required: true, message: '不能为空!'
+                                }],
                                 initialValue: env.alarm.rule.notifyTypes.reduce((arr, notifyType) => {
                                     if (data.notify_type.indexOf(notifyType.value) > -1) {
                                         arr.push(notifyType.name);

@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-23 17:58:07 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-05-13 22:34:12
+ * @Last Modified time: 2018-05-20 16:48:18
  */
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
@@ -58,7 +58,10 @@ const siders = [{
     icon: 'file-text',
     children: [{
         title: '成本分析',
-        route: '/app/report/cost'
+        route: '/app/report/cost',
+    }, {
+        title: '健康检查',
+        route: '/app/report/health'
     }]
 }, {
     title: '用户管理',

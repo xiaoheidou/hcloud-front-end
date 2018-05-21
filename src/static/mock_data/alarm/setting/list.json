@@ -3,6 +3,7 @@
     "message": "undefine",
     "data": [
         {
+            "name": "test",
             "alert_rules_id": "a68df93c-3bc0-11e8-a9e5-fa163ea5419d",
             "status": "0",
             "service": "node",
@@ -12,16 +13,39 @@
             ],
             "rules": [
                 {
-                    "monitor_items": "memory_usage",
+                    "monitor_items": "cpu_used",
                     "statistical_period": "5m",
                     "compute_mode": "==",
-                    "threshold_value": 80
+                    "threshold_value": 80,
+                    "silence": true
                 },
                 {
-                    "monitor_items": "memory_usage",
+                    "monitor_items": "memory_used_rate",
                     "statistical_period": "5m",
                     "compute_mode": ">",
-                    "threshold_value": 80
+                    "threshold_value": 80,
+                    "silence": true
+                },
+                {
+                    "monitor_items": "network_io",
+                    "statistical_period": "5m",
+                    "compute_mode": ">",
+                    "threshold_value": 80,
+                    "silence": true
+                },
+                {
+                    "monitor_items": "disk_io",
+                    "statistical_period": "5m",
+                    "compute_mode": ">",
+                    "threshold_value": 80,
+                    "silence": true
+                },
+                {
+                    "monitor_items": "disk_space",
+                    "statistical_period": "5m",
+                    "compute_mode": ">",
+                    "threshold_value": 80,
+                    "silence": true
                 }
             ],
             "contact_groups": [

@@ -57,3 +57,13 @@ export function updateStatus(id, status) {
     };
 }
 
+/**
+ * 根据服务类型获取默认告警模板
+ */
+export function getDefaultRule(service) {
+    return async dispatch => {
+        const result = await fetch(API.ALARM.SETTING.GET_DEDAULT_RULES.replace('${service}', service));
+        return result;
+    };
+}
+

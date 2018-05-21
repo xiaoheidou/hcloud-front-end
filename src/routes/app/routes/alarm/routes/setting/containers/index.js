@@ -8,7 +8,8 @@ import {
     getInstanceList,
     getUserList,
     deleteById,
-    updateStatus
+    updateStatus,
+    getDefaultRule
 } from '../logic/actions';
 
 class AlarmSettingContainer extends React.Component {
@@ -29,6 +30,7 @@ function mapDispatchToProps(dispatch, ownProps) {
         getUserList: () => dispatch(getUserList()),
         deleteById: (...args) => dispatch(deleteById(...args)),
         updateStatus: (...args) => dispatch(updateStatus(...args)),
+        getDefaultRule: (...args) => dispatch(getDefaultRule(...args)),
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AlarmSettingContainer);
