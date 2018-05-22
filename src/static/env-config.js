@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-17 23:23:26 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-05-20 11:51:15
+ * @Last Modified time: 2018-05-22 22:57:27
  */
 var env = (function () {
     return {
@@ -48,10 +48,10 @@ var env = (function () {
                     name: '一天'
                 }],
                 notifyTypes: [{
-                    value: 0,
+                    value: "0",
                     name: 'Email'
                 }, {
-                    value: 1,
+                    value: "1",
                     name: '短信'
                 }]
             }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Select, Row, Col, Input, Button, Card, Icon } from 'antd';
+import extend from 'SRC_PATH/utils/extend';
 const Option = Select.Option;
 const FormItem = Form.Item;
 
@@ -8,7 +9,7 @@ class AlarmSettingForm extends React.Component {
         services: [],
         users: [],
         data: {
-            // service: '',
+            // service: undefined,
             host_id: [],
             rules: [],
             contact_groups: [],
@@ -21,6 +22,7 @@ class AlarmSettingForm extends React.Component {
             this.setState({
                 data: this.props.currentAlert
             });
+            this.currentAlert = extend(true, {}, this.props.currentAlert);
         }
     }
 
@@ -31,11 +33,65 @@ class AlarmSettingForm extends React.Component {
         console.log(rules);
     }
 
+    // 获取监控规则中被修改的部分 0-修改 1-禁用 2-启用
+    diffRules = (newRules, oldRules) => {
+        let diffRules = [];
+        newRules.forEach((newRule, i) => {
+            const oldRule = oldRules[i];
+            let rule = {
+                ...newRule
+            };
+            if (newRule.compute_mode != oldRule.compute_mode || newRule.threshold_value != oldRule.threshold_value) {
+                rule.silence = [0];
+            }
+            if (newRule.silence !== oldRule.silence) {
+                rule.silence = rule.silence instanceof Array ? rule.silence : [];
+                rule.silence.push(newRule.silence === false ? 1 : 0);
+            }
+            if (rule.silence instanceof Array) {
+                diffRules.push(rule);
+            }
+        });
+        return diffRules;
+    }
+
     // 保存
     save = () => {
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+
+                this.setState(prevState => {
+                    let data = {
+                        name: values.name,
+                        service: values.service,
+                        host_id: values.instances,
+                        contact_groups: values.contactGroups,
+                        notify_type: values.notifyType,
+                        rules: []
+                    };
+                    const ruleLength = Object.keys(values).filter(v => {
+                        return v.indexOf('item-') > -1;
+                    }).length;
+                    for (let i = 0; i < ruleLength; i++) {
+                        data.rules.push({
+                            monitor_items: values[`item-${i}`],
+                            compute_mode: values[`compute-${i}`],
+                            threshold_value: values[`threshold-${i}`] - 0,
+                            silence: prevState.data.rules[i].silence
+                        });
+                    }
+                    return {
+                        data: {
+                            ...prevState.data,
+                            ...data
+                        }
+                    };
+                }, () => {
+                    console.log(this.state.data.rules);
+                    console.log(this.currentAlert.rules);
+                    console.log(this.diffRules(this.state.data.rules, this.currentAlert.rules));
+                });
+
             } else {
                 console.log(err);
             }
@@ -46,6 +102,13 @@ class AlarmSettingForm extends React.Component {
     getInstances = (service) => {
         const currentService = this.state.services.filter(dt => dt.service === service)[0] || {};
         return currentService.instances || [];
+    }
+
+    changeStatus = (index, status) => {
+        this.setState(prevState => {
+            prevState.data.rules[index].silence = status;
+            return prevState;
+        });
     }
 
     async componentDidMount() {
@@ -168,7 +231,11 @@ class AlarmSettingForm extends React.Component {
                             </Col>
                             <Col span={4}>
                                 <a href="javascript:void(0);">
-                                    {rule.silence ? <Icon type="play-circle-o" /> : <Icon type="pause-circle-o" />}
+                                    {
+                                        !rule.silence
+                                            ? <Icon type="play-circle-o" onClick={() => { this.changeStatus(index, true); }} />
+                                            : <Icon type="pause-circle-o" onClick={() => { this.changeStatus(index, false); }} />
+                                    }
                                 </a>
                             </Col>
                         </Row>;
@@ -197,12 +264,13 @@ class AlarmSettingForm extends React.Component {
                                 rules: [{
                                     required: true, message: '不能为空!'
                                 }],
-                                initialValue: env.alarm.rule.notifyTypes.reduce((arr, notifyType) => {
-                                    if (data.notify_type.indexOf(notifyType.value) > -1) {
-                                        arr.push(notifyType.name);
-                                    }
-                                    return arr;
-                                }, [])
+                                initialValue: data.notify_type
+                                // initialValue: env.alarm.rule.notifyTypes.reduce((arr, notifyType) => {
+                                //     if (data.notify_type.indexOf(notifyType.value) > -1) {
+                                //         arr.push(notifyType.name);
+                                //     }
+                                //     return arr;
+                                // }, [])
                             })(
                                 <Select
                                     mode="multiple"

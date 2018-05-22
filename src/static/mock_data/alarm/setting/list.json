@@ -14,35 +14,30 @@
             "rules": [
                 {
                     "monitor_items": "cpu_used",
-                    "statistical_period": "5m",
                     "compute_mode": "==",
                     "threshold_value": 80,
                     "silence": true
                 },
                 {
                     "monitor_items": "memory_used_rate",
-                    "statistical_period": "5m",
                     "compute_mode": ">",
                     "threshold_value": 80,
                     "silence": true
                 },
                 {
                     "monitor_items": "network_io",
-                    "statistical_period": "5m",
                     "compute_mode": ">",
                     "threshold_value": 80,
                     "silence": true
                 },
                 {
                     "monitor_items": "disk_io",
-                    "statistical_period": "5m",
                     "compute_mode": ">",
                     "threshold_value": 80,
                     "silence": true
                 },
                 {
                     "monitor_items": "disk_space",
-                    "statistical_period": "5m",
                     "compute_mode": ">",
                     "threshold_value": 80,
                     "silence": true
@@ -53,8 +48,8 @@
                 "ma@163.com"
             ],
             "notify_type": [
-                0,
-                1
+                "0",
+                "1"
             ]
         },
         {
@@ -67,13 +62,11 @@
             "rules": [
                 {
                     "monitor_items": "memory_usage",
-                    "statistical_period": "5m",
                     "compute_mode": ">",
                     "threshold_value": 80
                 },
                 {
                     "monitor_items": "memory_usage",
-                    "statistical_period": "5m",
                     "compute_mode": ">",
                     "threshold_value": 80
                 }
