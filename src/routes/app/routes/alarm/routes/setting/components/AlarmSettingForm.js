@@ -46,7 +46,7 @@ class AlarmSettingForm extends React.Component {
             }
             if (newRule.silence !== oldRule.silence) {
                 rule.silence = rule.silence instanceof Array ? rule.silence : [];
-                rule.silence.push(newRule.silence === false ? 1 : 0);
+                rule.silence.push(newRule.silence === false ? 1 : 2);
             }
             if (rule.silence instanceof Array) {
                 diffRules.push(rule);
