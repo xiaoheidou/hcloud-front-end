@@ -56,6 +56,7 @@ class Monitor extends React.Component {
     render() {
         const { getIndexData } = this.props;
         const { currentTime, data } = this.state;
+        const { category, key } = this.props.match.params;
 
         return <div className="monitor">
             <h4 className="monitor-title">标题显示</h4>
@@ -75,7 +76,13 @@ class Monitor extends React.Component {
                 dataSource={data}
                 renderItem={item => (
                     <List.Item>
-                        <LineChart title={item} getIndexData={getIndexData} times={currentTime.times} />
+                        <LineChart
+                            title={item}
+                            getIndexData={getIndexData}
+                            times={currentTime.times}
+                            category={category}
+                            categoryKey={key}
+                        />
                     </List.Item>
                 )}
             />

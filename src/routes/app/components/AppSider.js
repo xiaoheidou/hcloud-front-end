@@ -2,7 +2,7 @@
  * @Author: harry.lang 
  * @Date: 2018-04-23 17:58:07 
  * @Last Modified by: harry.lang
- * @Last Modified time: 2018-05-20 16:48:18
+ * @Last Modified time: 2018-05-27 23:18:43
  */
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
@@ -20,7 +20,7 @@ const siders = [{
     icon: 'profile',
     children: [{
         title: '主机资源',
-        route: '/app/resource/host'
+        route: '/app/resource/node'
     }, {
         title: 'nginx',
         route: '/app/resource/nginx'

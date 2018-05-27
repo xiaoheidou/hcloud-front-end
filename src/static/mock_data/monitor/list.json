@@ -1,61 +1,83 @@
 {
-    "message": "undefine",
-    "status": "success",
-    "data": [{
+    "data": [
+        {
             "aggregation": "avg",
             "category": "node",
-            "interval": "30s",
+            "interval": "15",
             "name": "cpu_used",
-            "nick_name": "CPU\u4f7f\u7528\u7387",
-            "status": "success"
+            "nick_name": "CPU使用率",
+            "query": "exported_instance='192.168.0.92:9100',group='gateway',exported_job='node_group',instance='114.67.76.108:9091',job='gateway'",
+            "status": "success",
+            "sub_name": "",
+            "unit": "%"
         },
         {
             "aggregation": "last",
             "category": "node",
-            "interval": "30s",
+            "interval": "15",
             "name": "memory_used_rate",
-            "nick_name": "\u5185\u5b58\u4f7f\u7528\u7387",
-            "status": "success"
+            "nick_name": "内存使用率",
+            "query": "exported_instance='192.168.0.92:9100',group='gateway',exported_job='node_group',instance='114.67.76.108:9091',job='gateway'",
+            "status": "success",
+            "sub_name": "",
+            "unit": "%"
         },
         {
             "aggregation": "last",
             "category": "node",
-            "interval": "30s",
+            "interval": "15",
             "name": "network_io",
-            "nick_name": "\u7f51\u5361\u63a5\u6536/\u53d1\u9001\u901f\u7387-eth0",
-            "status": "success"
+            "nick_name": "网卡接收/发送速率",
+            "query": "exported_instance='192.168.0.92:9100',group='gateway',exported_job='node_group',instance='114.67.76.108:9091',job='gateway',device='eth0'",
+            "status": "success",
+            "sub_name": "eth0",
+            "unit": "KB"
         },
         {
             "aggregation": "last",
             "category": "node",
-            "interval": "30s",
+            "interval": "15",
             "name": "disk_io",
-            "nick_name": "\u786c\u76d8\u8bfb/\u5199\u541e\u5410\u91cf-vda",
-            "status": "success"
+            "nick_name": "硬盘读/写吞吐量",
+            "query": "exported_instance='192.168.0.92:9100',group='gateway',exported_job='node_group',instance='114.67.76.108:9091',job='gateway',device='vda'",
+            "status": "success",
+            "sub_name": "vda",
+            "unit": "KB"
         },
         {
             "aggregation": "last",
             "category": "node",
-            "interval": "30s",
+            "interval": "15",
             "name": "disk_io",
-            "nick_name": "\u786c\u76d8\u8bfb/\u5199\u541e\u5410\u91cf-vdb",
-            "status": "success"
+            "nick_name": "硬盘读/写吞吐量",
+            "query": "exported_instance='192.168.0.92:9100',group='gateway',exported_job='node_group',instance='114.67.76.108:9091',job='gateway',device='vdb'",
+            "status": "success",
+            "sub_name": "vdb",
+            "unit": "KB"
         },
         {
             "aggregation": "last",
             "category": "node",
-            "interval": "30s",
+            "interval": "15",
             "name": "disk_space",
-            "nick_name": "\u786c\u76d8\u4f7f\u7528\u7387-/dev/vda1",
-            "status": "success"
-        }, {
+            "nick_name": "硬盘使用率",
+            "query": "exported_instance='192.168.0.92:9100',group='gateway',exported_job='node_group',fstype='xfs',instance='114.67.76.108:9091',job='gateway',mountpoint='/',device='/dev/vda1'",
+            "status": "success",
+            "sub_name": "/",
+            "unit": "%"
+        },
+        {
             "aggregation": "last",
             "category": "node",
-            "interval": "30s",
+            "interval": "15",
             "name": "disk_space",
-            "nick_name": "\u786c\u76d8\u4f7f\u7528\u7387-/dev/vdb",
-            "status": "success"
+            "nick_name": "硬盘使用率",
+            "query": "exported_instance='192.168.0.92:9100',group='gateway',exported_job='node_group',fstype='ext4',instance='114.67.76.108:9091',job='gateway',mountpoint='/data',device='/dev/vdb'",
+            "status": "success",
+            "sub_name": "/data",
+            "unit": "%"
         }
-    ]
-
+    ],
+    "message": "undefine",
+    "status": "success"
 }

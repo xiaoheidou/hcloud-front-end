@@ -25,7 +25,7 @@ class AppRouter extends React.Component {
                     loading: () => null
                 })
             } />
-            <Redirect from="/" to={`${match.url}/resource/host`} />
+            <Redirect from="/" to={`${match.url}/resource/node`} />
         </Switch>;
     }
 }

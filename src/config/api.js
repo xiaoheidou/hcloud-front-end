@@ -6,8 +6,9 @@ export default {
     },
     // 监控
     MONITOR: {
-        INDEX_DATA: './mock_data/monitor/line.json',
+        INDEX_DATA: API + '/monitor/detail_data/${category}/${key}',
         LIST: API + '/monitor/data/${category}/${key}'
+        // INDEX_DATA: './mock_data/monitor/line.json',
         // LIST: './mock_data/monitor/list.json'
     },
     // 告警

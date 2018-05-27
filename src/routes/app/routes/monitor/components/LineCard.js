@@ -19,14 +19,17 @@ class LineCard extends React.Component {
     timeout = null
 
     componentDidMount() {
-        const { getIndexData, title, times } = this.props;
+        const { getIndexData, title, times, category, categoryKey } = this.props;
         const interval = parseInt(title.interval);
+        console.log(category, categoryKey);
 
         const get = () => {
-            getIndexData({
-                start_time: times[0].valueOf(),
-                end_time: times[1].valueOf(),
-                metric: title.name
+            getIndexData(category, categoryKey, {
+                start: times[0].valueOf(),
+                end: times[1].valueOf(),
+                name: title.name,
+                query: title.query,
+                interval: title.interval
             }).then((data) => {
                 this.setState({
                     data: data

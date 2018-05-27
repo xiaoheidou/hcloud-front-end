@@ -16,9 +16,10 @@ export function getList(category, key) {
 /**
  * 获取指标数据
  */
-export function getIndexData(params) {
+export function getIndexData(category, key, params) {
     return async dispatch => {
-        const result = await fetch(API.MONITOR.INDEX_DATA, {
+        const url = API.MONITOR.INDEX_DATA.replace('${category}', category).replace('${key}', key);
+        const result = await fetch(url, {
             params: params
         });
         return result;
